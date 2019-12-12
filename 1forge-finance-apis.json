@@ -1,13 +1,7 @@
 {
     "openapi": "3.0.0",
-    "info": {
-        "version": "0.0.1",
-        "title": "1Forge Finance APIs",
-        "description": "Stock and Forex Data and Realtime Quotes",
-        "termsOfService": "http:\/\/exmple.com\/license\/"
-    },
     "servers": [
-        "https1forge.com\/forex-quotes"
+        "http:\/\/1forge.com\/forex-quotes"
     ],
     "paths": {
         "\/quotes": {
