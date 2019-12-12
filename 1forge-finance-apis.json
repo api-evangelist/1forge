@@ -17,6 +17,20 @@
                     }
                 }
             }
+        },
+        "\/symbols": {
+            "get": {
+                "summary": "Get a list of symbols for which we provide real-time quotes",
+                "description": "Symbol List",
+                "operationId": "",
+                "deprecated": 0,
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "A list of quotes"
+                    }
+                }
+            }
         }
     },
     "components": {
