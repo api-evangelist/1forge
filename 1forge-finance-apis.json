@@ -4,7 +4,7 @@
         "version": "0.0.1",
         "title": "1Forge Finance APIs",
         "description": "Stock and Forex Data and Realtime Quotes",
-        "termsOfService": "http:\/\/exmple.com\/license\/"
+        "termsOfService": ""
     },
     "servers": [
         "https1forge.com\/forex-quotes"
@@ -14,14 +14,9 @@
             "get": {
                 "summary": "Get quotes for all symbols",
                 "description": "Get quotes",
-                "operationId": "",
+                "operationId": "QuotesGet",
                 "deprecated": 0,
-                "parameters": [],
-                "responses": {
-                    "200": {
-                        "description": "A list of quotes"
-                    }
-                }
+                "parameters": []
             }
         }
     },
