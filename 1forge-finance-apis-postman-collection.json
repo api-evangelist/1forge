@@ -1,0 +1,59 @@
+{
+    "id": "aef8a4ad01b9f30e6db19e866f718f6c",
+    "name": "1Forge Finance APIs",
+    "description": null,
+    "auth": null,
+    "events": null,
+    "variables": [],
+    "order": [],
+    "folders_order": [],
+    "folders": [],
+    "requests": [
+        {
+            "id": "7f6f186de3c778e242b9c20d787e091e",
+            "name": "Get quotes for all symbols",
+            "url": "http:\/\/1forge.com\/forex-quotes\/quotes",
+            "description": "Get quotes",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "aef8a4ad01b9f30e6db19e866f718f6c",
+            "rawModeData": ""
+        },
+        {
+            "id": "e54f5de27f1693cb33d6cf89bb3cd173",
+            "name": "Get a list of symbols for which we provide real-time quotes",
+            "url": "http:\/\/1forge.com\/forex-quotes\/symbols",
+            "description": "Symbol List",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "aef8a4ad01b9f30e6db19e866f718f6c",
+            "rawModeData": ""
+        }
+    ]
+}
