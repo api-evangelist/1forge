@@ -71,6 +71,10 @@
                     "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/1forge-openapi.json"
                 },
                 {
+                    "type": "x-openapi",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/apis.json"
+                },
+                {
                     "type": "x-postman-collecction",
                     "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/1forge-postman.json"
                 },
@@ -87,34 +91,6 @@
     ],
     "include": [],
     "x-common": [
-        {
-            "type": "OpenAPI",
-            "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/1forge-get-currency-quotes-api-stream.json"
-        },
-        {
-            "type": "OpenAPI",
-            "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/1forge-get-currency-symbols-api-stream.json"
-        },
-        {
-            "type": "OpenAPI",
-            "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/1forge-currency-conversion-api-stream.json"
-        },
-        {
-            "type": "OpenAPI",
-            "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/1forge-financial-market-status-api-stream.json"
-        },
-        {
-            "type": "OpenAPI",
-            "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/1forge-api-usage-quota-api-stream.json"
-        },
-        {
-            "type": "OpenAPI",
-            "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/1forge.json"
-        },
-        {
-            "type": "OpenAPI",
-            "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/1forge-finance-apis.json"
-        },
         {
             "type": "Code",
             "url": "https:\/\/1forge.com\/forex-data-api\/libraries"
