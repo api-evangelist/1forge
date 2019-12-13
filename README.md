@@ -1,1 +1,1 @@
-# 1forge
+# 1ForgeThis is a repo for managing machine readable artifacts for the 1Forge APIs.The goal is to maintain and evolve an OpenAPI, Postman Collection, and APIs.json index for 1Forge.Feel free to submit a pull request to evolve any of the artifacts, and leave GitHub issues if you have any questions, comments, or feedback.
