@@ -1,5 +1,5 @@
 {
-    "id": "4afac11717584dd97d69d812ac28310e",
+    "id": "482022e578d3117f2c14e58f6ec0e150",
     "name": "1Forge Finance APIs",
     "description": null,
     "auth": null,
@@ -10,7 +10,7 @@
     "folders": [],
     "requests": [
         {
-            "id": "cf1cadaac5dbee25b8046563e4aaa124",
+            "id": "177dcb6251779d2dc44ca36261373f72",
             "name": "Get quotes for all symbols",
             "url": "http:\/\/1forge.com\/forex-quotes\/quotes",
             "description": "Get quotes",
@@ -29,11 +29,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "4afac11717584dd97d69d812ac28310e",
+            "collectionId": "482022e578d3117f2c14e58f6ec0e150",
             "rawModeData": ""
         },
         {
-            "id": "0b25d69407815fb30d127a442e4fbbf3",
+            "id": "3179f87c3805b4f0c504d1c0300f5bcf",
             "name": "Get a list of symbols for which we provide real-time quotes",
             "url": "http:\/\/1forge.com\/forex-quotes\/symbols",
             "description": "Symbol List",
@@ -52,7 +52,7 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "4afac11717584dd97d69d812ac28310e",
+            "collectionId": "482022e578d3117f2c14e58f6ec0e150",
             "rawModeData": ""
         }
     ]
