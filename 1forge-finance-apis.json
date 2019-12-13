@@ -1,59 +1,39 @@
 {
-    "id": "4d9a23cd384e2a5e924029386028e1f7",
-    "name": "1Forge Finance APIs",
-    "description": null,
-    "auth": null,
-    "events": null,
-    "variables": [],
-    "order": [],
-    "folders_order": [],
-    "folders": [],
-    "requests": [
-        {
-            "id": "9f70443f71b66bc326b9dfd6f3cfe3d0",
-            "name": "Get quotes for all symbols",
-            "url": "http:\/\/1forge.com\/forex-quotes\/quotes",
-            "description": "Get quotes",
-            "data": [],
-            "dataMode": "raw",
-            "headerData": null,
-            "method": "get",
-            "pathVariableData": [],
-            "queryParams": [],
-            "auth": null,
-            "events": null,
-            "folder": null,
-            "protocolProfileBehavior": {
-                "disableBodyPruning": true
-            },
-            "responses": [],
-            "currentHelper": null,
-            "helperAttributes": null,
-            "collectionId": "4d9a23cd384e2a5e924029386028e1f7",
-            "rawModeData": ""
+    "openapi": "3.0.0",
+    "servers": [
+        "http:\/\/1forge.com\/forex-quotes"
+    ],
+    "paths": {
+        "\/quotes": {
+            "get": {
+                "summary": "Get quotes for all symbols",
+                "description": "Get quotes",
+                "operationId": "",
+                "deprecated": 0,
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "A list of quotes"
+                    }
+                }
+            }
         },
-        {
-            "id": "5ae58ddfbddef7edbd81217508a52a8d",
-            "name": "Get a list of symbols for which we provide real-time quotes",
-            "url": "http:\/\/1forge.com\/forex-quotes\/symbols",
-            "description": "Symbol List",
-            "data": [],
-            "dataMode": "raw",
-            "headerData": null,
-            "method": "get",
-            "pathVariableData": [],
-            "queryParams": [],
-            "auth": null,
-            "events": null,
-            "folder": null,
-            "protocolProfileBehavior": {
-                "disableBodyPruning": true
-            },
-            "responses": [],
-            "currentHelper": null,
-            "helperAttributes": null,
-            "collectionId": "4d9a23cd384e2a5e924029386028e1f7",
-            "rawModeData": ""
+        "\/symbols": {
+            "get": {
+                "summary": "Get a list of symbols for which we provide real-time quotes",
+                "description": "Symbol List",
+                "operationId": "",
+                "deprecated": 0,
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "A list of quotes"
+                    }
+                }
+            }
         }
-    ]
+    },
+    "components": {
+        "schemas": []
+    }
 }
