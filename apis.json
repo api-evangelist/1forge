@@ -80,6 +80,10 @@
     "include": [],
     "x-common": [
         {
+            "type": "APIs.json",
+            "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/apis.json"
+        },
+        {
             "type": "Code",
             "url": "https:\/\/1forge.com\/forex-data-api\/libraries"
         },
@@ -108,22 +112,6 @@
             "url": "https:\/\/1forge.com\/forex-data-api\/license-agreement"
         },
         {
-            "type": "License Agreement",
-            "url": "https:\/\/1forge.com\/forex-data-api\/license-agreement"
-        },
-        {
-            "type": "Swagger",
-            "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-definitions\/swagger\/28079-2019-09-02-17-11-08.json"
-        },
-        {
-            "type": "Swagger",
-            "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-definitions\/swagger\/28079-2019-12-11-20-21-20.json"
-        },
-        {
-            "type": "Swagger",
-            "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-definitions\/swagger\/28079-2019-12-11-20-24-10.json"
-        },
-        {
             "type": "Pricing",
             "url": "https:\/\/1forge.com\/forex-data-api\/pricing"
         },
@@ -142,10 +130,6 @@
         {
             "type": "Website",
             "url": "http:\/\/1forge.com"
-        },
-        {
-            "type": "Website",
-            "url": "https:\/\/1forge.com"
         }
     ]
 }
