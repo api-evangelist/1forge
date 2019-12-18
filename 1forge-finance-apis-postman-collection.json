@@ -1,5 +1,5 @@
 {
-    "id": "e87744075b8281e5651401c10d433505",
+    "id": "6fa925b315e88c03603771b210810578",
     "name": "1Forge Finance APIs",
     "description": null,
     "auth": null,
@@ -10,16 +10,31 @@
     "folders": [],
     "requests": [
         {
-            "id": "e6301e9e909d7dd2b31ef1349ad9ae69",
-            "name": "Get quotes for all symbols",
+            "id": "f69b7fe592a71a86b754a2005b0df9c6",
+            "name": "Get Quotes",
             "url": "http:\/\/1forge.com\/forex-quotes\/quotes",
-            "description": "Get quotes",
+            "description": "Get quotes for all symbols",
             "data": [],
             "dataMode": "raw",
             "headerData": null,
             "method": "get",
             "pathVariableData": [],
-            "queryParams": [],
+            "queryParams": [
+                {
+                    "key": "pairs",
+                    "description": "Comma separate list of currency pairs.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "api_key",
+                    "description": "Your API key.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
             "auth": null,
             "events": null,
             "folder": null,
@@ -29,20 +44,28 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "e87744075b8281e5651401c10d433505",
+            "collectionId": "6fa925b315e88c03603771b210810578",
             "rawModeData": ""
         },
         {
-            "id": "ec9ea6729e091c862d508f49900b9500",
-            "name": "Get a list of symbols for which we provide real-time quotes",
+            "id": "8eb7a218ae36b573475b44a3c15f5c8d",
+            "name": "Symbol List",
             "url": "http:\/\/1forge.com\/forex-quotes\/symbols",
-            "description": "Symbol List",
+            "description": "Get a list of symbols for which we provide real-time quotes",
             "data": [],
             "dataMode": "raw",
             "headerData": null,
             "method": "get",
             "pathVariableData": [],
-            "queryParams": [],
+            "queryParams": [
+                {
+                    "key": "api_key",
+                    "description": "Your API key.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
             "auth": null,
             "events": null,
             "folder": null,
@@ -52,7 +75,100 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "e87744075b8281e5651401c10d433505",
+            "collectionId": "6fa925b315e88c03603771b210810578",
+            "rawModeData": ""
+        },
+        {
+            "id": "a4d1c5d792ab23958e9f57a7ca59e8d4",
+            "name": "Convert",
+            "url": "http:\/\/1forge.com\/forex-quotes\/convert",
+            "description": "Convert from one currency to another.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "api_key",
+                    "description": "Your API key.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "6fa925b315e88c03603771b210810578",
+            "rawModeData": ""
+        },
+        {
+            "id": "fe76128ce0b2f956581981f33d23171d",
+            "name": "Market Status",
+            "url": "http:\/\/1forge.com\/forex-quotes\/market_status",
+            "description": "Check if the market is open.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "api_key",
+                    "description": "Your API key.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "6fa925b315e88c03603771b210810578",
+            "rawModeData": ""
+        },
+        {
+            "id": "7e303d561797f44485df558194703967",
+            "name": "Quota",
+            "url": "http:\/\/1forge.com\/forex-quotes\/quota",
+            "description": "Check your current usage and remaining quota.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "api_key",
+                    "description": "Your API key.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "6fa925b315e88c03603771b210810578",
             "rawModeData": ""
         }
     ]
