@@ -1,5 +1,5 @@
 {
-    "id": "6fa925b315e88c03603771b210810578",
+    "id": "e16e5726d26b8d66496e4f2fe9ac82e7",
     "name": "1Forge Finance APIs",
     "description": null,
     "auth": null,
@@ -10,7 +10,7 @@
     "folders": [],
     "requests": [
         {
-            "id": "f69b7fe592a71a86b754a2005b0df9c6",
+            "id": "4e642e4f27f32250b89628b6f48b2e49",
             "name": "Get Quotes",
             "url": "http:\/\/1forge.com\/forex-quotes\/quotes",
             "description": "Get quotes for all symbols",
@@ -44,11 +44,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "6fa925b315e88c03603771b210810578",
+            "collectionId": "e16e5726d26b8d66496e4f2fe9ac82e7",
             "rawModeData": ""
         },
         {
-            "id": "8eb7a218ae36b573475b44a3c15f5c8d",
+            "id": "82afbc76036d03cc095710466bcb1b3d",
             "name": "Symbol List",
             "url": "http:\/\/1forge.com\/forex-quotes\/symbols",
             "description": "Get a list of symbols for which we provide real-time quotes",
@@ -75,11 +75,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "6fa925b315e88c03603771b210810578",
+            "collectionId": "e16e5726d26b8d66496e4f2fe9ac82e7",
             "rawModeData": ""
         },
         {
-            "id": "a4d1c5d792ab23958e9f57a7ca59e8d4",
+            "id": "7b2d2a701eca893d56ae9cddc946061e",
             "name": "Convert",
             "url": "http:\/\/1forge.com\/forex-quotes\/convert",
             "description": "Convert from one currency to another.",
@@ -106,11 +106,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "6fa925b315e88c03603771b210810578",
+            "collectionId": "e16e5726d26b8d66496e4f2fe9ac82e7",
             "rawModeData": ""
         },
         {
-            "id": "fe76128ce0b2f956581981f33d23171d",
+            "id": "d1b06c9f3cb93d03e9e4c5d950f400bd",
             "name": "Market Status",
             "url": "http:\/\/1forge.com\/forex-quotes\/market_status",
             "description": "Check if the market is open.",
@@ -137,11 +137,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "6fa925b315e88c03603771b210810578",
+            "collectionId": "e16e5726d26b8d66496e4f2fe9ac82e7",
             "rawModeData": ""
         },
         {
-            "id": "7e303d561797f44485df558194703967",
+            "id": "185acd4f158445f642025932189e46d5",
             "name": "Quota",
             "url": "http:\/\/1forge.com\/forex-quotes\/quota",
             "description": "Check your current usage and remaining quota.",
@@ -168,7 +168,7 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "6fa925b315e88c03603771b210810578",
+            "collectionId": "e16e5726d26b8d66496e4f2fe9ac82e7",
             "rawModeData": ""
         }
     ]
