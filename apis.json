@@ -25,8 +25,8 @@
         "trading",
         "widgets"
     ],
-    "created": "2019-12-18",
-    "modified": "2019-12-18",
+    "created": "2019-12-20",
+    "modified": "2019-12-20",
     "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/apis.json",
     "specificationVersion": "0.14",
     "apis": [
@@ -38,50 +38,6 @@
             "baseURL": "",
             "tags": [],
             "properties": [
-                {
-                    "type": "x-openapi",
-                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/1forge.json"
-                },
-                {
-                    "type": "x-openapi",
-                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/1forge-openapi.json"
-                },
-                {
-                    "type": "x-openapi",
-                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/apis.json"
-                },
-                {
-                    "type": "x-openapi",
-                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/1forge-finance-apis-openapi.json"
-                },
-                {
-                    "type": "x-postman-collecction",
-                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/1forge-postman.json"
-                },
-                {
-                    "type": "x-postman-collecction",
-                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/1forge-finance-apis-postman-collection.json"
-                },
-                {
-                    "type": "x-postman-collecction",
-                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/1forge-finance-apis-postman-collection.json"
-                },
-                {
-                    "type": "x-postman-collecction",
-                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/1forge-finance-apis-postman-collection.json"
-                },
-                {
-                    "type": "x-postman-collecction",
-                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/1forge-finance-apis-postman-collection.json"
-                },
-                {
-                    "type": "x-postman-collecction",
-                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/1forge-finance-apis-postman-collection.json"
-                },
-                {
-                    "type": "x-postman-collecction",
-                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/1forge-finance-apis-postman-collection.json"
-                },
                 {
                     "type": "x-postman-collecction",
                     "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/1forge-finance-apis-postman-collection.json"
