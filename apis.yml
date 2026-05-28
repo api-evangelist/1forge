@@ -1,0 +1,32 @@
+aid: 1forge
+name: 1Forge
+description: "Forex currency market data"
+url: https://1forge.com/forex-data-api/api-documentation
+specificationVersion: '0.20'
+created: '2026-05-28'
+modified: '2026-05-28'
+x-source: public-apis/public-apis
+x-category: "Currency Exchange"
+x-tier: 3
+x-tier-reason: bulk-registered-from-public-apis
+tags:
+  - Currency Exchange
+  - Public APIs
+apis:
+  - name: 1Forge
+    description: "Forex currency market data"
+    humanURL: https://1forge.com/forex-data-api/api-documentation
+    baseURL: https://1forge.com/forex-data-api/api-documentation
+    tags:
+      - Currency Exchange
+    properties:
+      - type: Documentation
+        url: https://1forge.com/forex-data-api/api-documentation
+common:
+  - type: Website
+    url: https://1forge.com/forex-data-api/api-documentation
+  - type: PublicAPIsListing
+    url: https://github.com/public-apis/public-apis
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
