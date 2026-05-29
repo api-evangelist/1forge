@@ -1,0 +1,266 @@
+vocabulary: "1.0.0"
+
+info:
+  provider: "1Forge"
+  description: "Unified taxonomy mapping 1Forge's operational REST/WebSocket surface (quotes, conversion, symbols, market status, quota) to a single capability dimension used by Naftiko workflows."
+  created: "2026-05-28"
+  modified: "2026-05-28"
+
+# OPERATIONAL DIMENSION (from OpenAPI + AsyncAPI)
+operational:
+  apis:
+    - name: "Forex Data API"
+      namespace: "forex-data-api"
+      version: "2024.01"
+      baseUrl: "https://api.1forge.com"
+      status: "active"
+      protocol: "rest"
+    - name: "Forex Stream"
+      namespace: "forex-stream"
+      version: "2024.01"
+      baseUrl: "wss://sockets.1forge.com/socket"
+      status: "active"
+      protocol: "websocket"
+
+  resources:
+    - name: "quotes"
+      api: "forex-data-api"
+      actions: ["get"]
+    - name: "conversion"
+      api: "forex-data-api"
+      actions: ["convert"]
+    - name: "symbols"
+      api: "forex-data-api"
+      actions: ["list"]
+    - name: "market_status"
+      api: "forex-data-api"
+      actions: ["check"]
+    - name: "quota"
+      api: "forex-data-api"
+      actions: ["get"]
+    - name: "stream_subscription"
+      api: "forex-stream"
+      actions: ["subscribe", "unsubscribe"]
+
+  actions:
+    - name: "get"
+      httpMethod: "GET"
+      pattern: "read"
+    - name: "list"
+      httpMethod: "GET"
+      pattern: "query"
+    - name: "convert"
+      httpMethod: "GET"
+      pattern: "read"
+    - name: "check"
+      httpMethod: "GET"
+      pattern: "read"
+    - name: "subscribe"
+      pattern: "stream"
+    - name: "unsubscribe"
+      pattern: "stream"
+
+  schemas:
+    core:
+      - name: "Quote"
+        properties: ["s", "p", "b", "a", "t"]
+        description: "Single bid/ask/price snapshot for a currency pair."
+      - name: "ConversionResult"
+        properties: ["value", "text", "timestamp"]
+        description: "Result of converting an amount between two currencies."
+      - name: "MarketStatus"
+        properties: ["market_is_open"]
+        description: "Forex market open/closed flag."
+      - name: "Quota"
+        properties: ["quota_used", "quota_limit", "quota_remaining", "hours_until_reset"]
+        description: "API key consumption against the plan quota."
+      - name: "Error"
+        properties: ["error", "message"]
+        description: "Generic error response."
+
+  parameters:
+    identifiers:
+      - name: "api_key"
+        in: "query"
+        description: "Caller's 1Forge API key."
+      - name: "pairs"
+        in: "query"
+        description: "Comma-separated list of currency pair symbols."
+    filters:
+      - name: "from"
+        in: "query"
+        description: "Source currency code (ISO 4217)."
+      - name: "to"
+        in: "query"
+        description: "Destination currency code (ISO 4217)."
+      - name: "quantity"
+        in: "query"
+        description: "Numeric amount of the source currency."
+
+  enums:
+    pair_notation:
+      - "BASE/QUOTE (e.g. EUR/USD)"
+      - "CONCATENATED (e.g. EURUSD)"
+
+  authentication:
+    schemes:
+      - name: "ApiKeyAuth"
+        type: "apiKey"
+        in: "query"
+        parameter: "api_key"
+        usedBy: ["forex-data-api"]
+      - name: "WebSocketLogin"
+        type: "custom"
+        protocol: "websocket"
+        description: "API key sent as `login|{api_key}` frame after socket open."
+        usedBy: ["forex-stream"]
+
+# CAPABILITY DIMENSION (from Naftiko)
+capability:
+  workflows:
+    - name: "Quotes"
+      file: "capabilities/forex-data-api-quotes.yaml"
+      apisCombined: ["forex-data-api"]
+      toolCount: 1
+      personas: ["Trading App Developer", "Finance Operator"]
+      domains: ["Market Data"]
+    - name: "Convert"
+      file: "capabilities/forex-data-api-convert.yaml"
+      apisCombined: ["forex-data-api"]
+      toolCount: 1
+      personas: ["Checkout Engineer", "Finance Operator"]
+      domains: ["Currency Conversion"]
+    - name: "Symbols"
+      file: "capabilities/forex-data-api-symbols.yaml"
+      apisCombined: ["forex-data-api"]
+      toolCount: 1
+      personas: ["Trading App Developer"]
+      domains: ["Market Data"]
+    - name: "Market Status"
+      file: "capabilities/forex-data-api-market-status.yaml"
+      apisCombined: ["forex-data-api"]
+      toolCount: 1
+      personas: ["Trading App Developer", "Operations Engineer"]
+      domains: ["Market Data"]
+    - name: "Quota"
+      file: "capabilities/forex-data-api-quota.yaml"
+      apisCombined: ["forex-data-api"]
+      toolCount: 1
+      personas: ["Platform Operator", "FinOps Analyst"]
+      domains: ["Quota Management"]
+
+  personas:
+    - id: "trading-app-developer"
+      name: "Trading App Developer"
+      description: "Builds consumer-facing trading or portfolio UIs that need live forex quotes."
+      workflows: ["Quotes", "Symbols", "Market Status"]
+    - id: "checkout-engineer"
+      name: "Checkout Engineer"
+      description: "Owns multi-currency pricing surfaces (cart, checkout, invoice) and needs single-shot conversions."
+      workflows: ["Convert"]
+    - id: "finance-operator"
+      name: "Finance Operator"
+      description: "Runs FX-aware accounting, treasury, or reconciliation pipelines."
+      workflows: ["Quotes", "Convert"]
+    - id: "operations-engineer"
+      name: "Operations Engineer"
+      description: "Schedules batch jobs around market sessions and monitors data freshness."
+      workflows: ["Market Status"]
+    - id: "platform-operator"
+      name: "Platform Operator"
+      description: "Owns the 1Forge integration and monitors quota burn."
+      workflows: ["Quota"]
+    - id: "finops-analyst"
+      name: "FinOps Analyst"
+      description: "Allocates API spend across teams and forecasts quota consumption."
+      workflows: ["Quota"]
+
+  domains:
+    - name: "Market Data"
+      description: "Real-time forex and crypto pricing surfaces."
+      resources: ["quotes", "symbols", "market_status", "stream_subscription"]
+    - name: "Currency Conversion"
+      description: "Single-shot conversion of amounts between currencies."
+      resources: ["conversion"]
+    - name: "Quota Management"
+      description: "Per-key consumption inspection and quota planning."
+      resources: ["quota"]
+
+  namespaces:
+    - name: "forex-data-api-quotes"
+      type: "consumes"
+    - name: "forex-data-api-quotes-rest"
+      type: "rest"
+      port: 8080
+    - name: "forex-data-api-quotes-mcp"
+      type: "mcp"
+      port: 9090
+    - name: "forex-data-api-convert"
+      type: "consumes"
+    - name: "forex-data-api-convert-rest"
+      type: "rest"
+      port: 8080
+    - name: "forex-data-api-convert-mcp"
+      type: "mcp"
+      port: 9090
+    - name: "forex-data-api-symbols"
+      type: "consumes"
+    - name: "forex-data-api-symbols-rest"
+      type: "rest"
+      port: 8080
+    - name: "forex-data-api-symbols-mcp"
+      type: "mcp"
+      port: 9090
+    - name: "forex-data-api-market-status"
+      type: "consumes"
+    - name: "forex-data-api-market-status-rest"
+      type: "rest"
+      port: 8080
+    - name: "forex-data-api-market-status-mcp"
+      type: "mcp"
+      port: 9090
+    - name: "forex-data-api-quota"
+      type: "consumes"
+    - name: "forex-data-api-quota-rest"
+      type: "rest"
+      port: 8080
+    - name: "forex-data-api-quota-mcp"
+      type: "mcp"
+      port: 9090
+
+  binds:
+    - name: "ONEFORGE_API_KEY"
+      description: "1Forge API key issued at https://1forge.com."
+      usedBy:
+        - "Quotes"
+        - "Convert"
+        - "Symbols"
+        - "Market Status"
+        - "Quota"
+
+# CROSS-REFERENCE
+crossReference:
+  - resource: "quotes"
+    operations: ["getQuotes"]
+    workflows: ["Quotes"]
+    personas: ["Trading App Developer", "Finance Operator"]
+  - resource: "conversion"
+    operations: ["convertCurrency"]
+    workflows: ["Convert"]
+    personas: ["Checkout Engineer", "Finance Operator"]
+  - resource: "symbols"
+    operations: ["getSymbols"]
+    workflows: ["Symbols"]
+    personas: ["Trading App Developer"]
+  - resource: "market_status"
+    operations: ["getMarketStatus"]
+    workflows: ["Market Status"]
+    personas: ["Trading App Developer", "Operations Engineer"]
+  - resource: "quota"
+    operations: ["getQuota"]
+    workflows: ["Quota"]
+    personas: ["Platform Operator", "FinOps Analyst"]
+  - resource: "stream_subscription"
+    operations: ["subscribeTo", "subscribeToAll", "unsubscribeFrom", "unsubscribeFromAll"]
+    workflows: []
+    personas: ["Trading App Developer"]

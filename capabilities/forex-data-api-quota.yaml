@@ -1,0 +1,81 @@
+naftiko: "1.0.0-alpha2"
+
+info:
+  label: "1Forge Forex Data API — Quota"
+  description: >-
+    Quota — Inspect API key consumption and remaining quota for the current billing
+    window. 1 operation. Lead operation: 1Forge Get API Key Quota. Self-contained
+    Naftiko capability covering one 1Forge business surface.
+  tags:
+    - 1Forge
+    - Forex Data API
+    - Quota
+  created: "2026-05-28"
+  modified: "2026-05-28"
+
+binds:
+  - namespace: env
+    keys:
+      ONEFORGE_API_KEY: ONEFORGE_API_KEY
+
+capability:
+
+  consumes:
+    - type: http
+      namespace: "forex-data-api-quota"
+      baseUri: "https://api.1forge.com"
+      description: "1Forge Forex Data API — Quota business capability. Self-contained, no shared references."
+      authentication:
+        type: apikey
+        key: api_key
+        value: "{{env.ONEFORGE_API_KEY}}"
+        placement: query
+      resources:
+        - name: "quota"
+          path: "/quota"
+          operations:
+            - name: "getQuota"
+              method: GET
+              description: "1Forge Get API Key Quota."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+  exposes:
+    - type: rest
+      namespace: "forex-data-api-quota-rest"
+      port: 8080
+      description: "REST adapter for 1Forge Forex Data API — Quota. One Spectral-compliant resource per consumed operation, prefixed with /v1."
+      resources:
+        - path: "/v1/quota"
+          name: "quota"
+          description: "REST surface for API key quota inspection."
+          operations:
+            - method: GET
+              name: "getQuota"
+              description: "1Forge Get API Key Quota."
+              call: "forex-data-api-quota.getQuota"
+              with: {}
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      namespace: "forex-data-api-quota-mcp"
+      port: 9090
+      transport: http
+      description: "MCP adapter for 1Forge Forex Data API — Quota. One tool per consumed operation, routed inline through this capability's consumes block."
+      tools:
+        - name: "get-quota"
+          description: "1Forge Get API Key Quota."
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: "forex-data-api-quota.getQuota"
+          with: {}
+          outputParameters:
+            - type: object
+              mapping: "$."

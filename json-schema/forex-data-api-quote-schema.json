@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/1forge/refs/heads/main/json-schema/forex-data-api-quote-schema.json",
+  "title": "Quote",
+  "description": "A single bid/ask/price snapshot for a forex or cryptocurrency pair returned by the 1Forge Forex Data API.",
+  "type": "object",
+  "required": ["s", "p", "b", "a", "t"],
+  "properties": {
+    "s": {
+      "type": "string",
+      "description": "Currency pair symbol in BASE/QUOTE notation.",
+      "example": "EUR/USD"
+    },
+    "p": {
+      "type": "number",
+      "description": "Last traded price (midpoint of bid/ask).",
+      "example": 1.181
+    },
+    "b": {
+      "type": "number",
+      "description": "Current bid price.",
+      "example": 1.18099
+    },
+    "a": {
+      "type": "number",
+      "description": "Current ask price.",
+      "example": 1.18101
+    },
+    "t": {
+      "type": "integer",
+      "description": "Unix epoch timestamp (seconds) of the quote.",
+      "example": 1502160794
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/1forge/refs/heads/main/json-structure/forex-data-api-quota-structure.json",
+  "name": "Quota",
+  "description": "Current API key consumption against the plan quota as reported by the 1Forge quota endpoint.",
+  "type": "object",
+  "required": ["quota_used", "quota_limit", "quota_remaining", "hours_until_reset"],
+  "properties": {
+    "quota_used": {
+      "type": "int64",
+      "description": "Number of requests consumed in the current billing window."
+    },
+    "quota_limit": {
+      "type": "int64",
+      "description": "Total request quota for the current billing window."
+    },
+    "quota_remaining": {
+      "type": "int64",
+      "description": "Requests remaining in the current billing window."
+    },
+    "hours_until_reset": {
+      "type": "int32",
+      "description": "Hours until the quota resets."
+    }
+  }
+}

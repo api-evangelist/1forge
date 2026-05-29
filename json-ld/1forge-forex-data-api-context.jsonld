@@ -1,0 +1,63 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "forge": "https://1forge.com/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "Quote": "forge:Quote",
+    "ConversionResult": "forge:ConversionResult",
+    "MarketStatus": "forge:MarketStatus",
+    "Quota": "forge:Quota",
+
+    "symbol": {
+      "@id": "forge:s",
+      "@type": "xsd:string"
+    },
+    "price": {
+      "@id": "forge:p",
+      "@type": "xsd:double"
+    },
+    "bid": {
+      "@id": "forge:b",
+      "@type": "xsd:double"
+    },
+    "ask": {
+      "@id": "forge:a",
+      "@type": "xsd:double"
+    },
+    "timestamp": {
+      "@id": "forge:t",
+      "@type": "xsd:integer"
+    },
+    "value": {
+      "@id": "forge:value",
+      "@type": "xsd:double"
+    },
+    "text": {
+      "@id": "forge:text",
+      "@type": "xsd:string"
+    },
+    "marketIsOpen": {
+      "@id": "forge:market_is_open",
+      "@type": "xsd:boolean"
+    },
+    "quotaUsed": {
+      "@id": "forge:quota_used",
+      "@type": "xsd:integer"
+    },
+    "quotaLimit": {
+      "@id": "forge:quota_limit",
+      "@type": "xsd:integer"
+    },
+    "quotaRemaining": {
+      "@id": "forge:quota_remaining",
+      "@type": "xsd:integer"
+    },
+    "hoursUntilReset": {
+      "@id": "forge:hours_until_reset",
+      "@type": "xsd:integer"
+    }
+  }
+}

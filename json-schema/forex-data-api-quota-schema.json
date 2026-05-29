@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/1forge/refs/heads/main/json-schema/forex-data-api-quota-schema.json",
+  "title": "Quota",
+  "description": "Current API key consumption against the plan quota as reported by the 1Forge quota endpoint.",
+  "type": "object",
+  "required": ["quota_used", "quota_limit", "quota_remaining", "hours_until_reset"],
+  "properties": {
+    "quota_used": {
+      "type": "integer",
+      "description": "Number of requests consumed in the current billing window.",
+      "example": 259
+    },
+    "quota_limit": {
+      "type": "integer",
+      "description": "Total request quota for the current billing window.",
+      "example": 5000
+    },
+    "quota_remaining": {
+      "type": "integer",
+      "description": "Requests remaining in the current billing window.",
+      "example": 4741
+    },
+    "hours_until_reset": {
+      "type": "integer",
+      "description": "Hours until the quota resets.",
+      "example": 23
+    }
+  }
+}

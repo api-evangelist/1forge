@@ -1,0 +1,198 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: 1Forge
+providerId: 1forge
+created: '2026-05-28'
+modified: '2026-05-28'
+reconciled: false
+tags:
+  - Forex Data
+  - Currency Conversion
+  - Market Data
+  - Subscription
+description: >-
+  1Forge prices its forex data product as a four-tier monthly subscription:
+  Starter ($25/mo with a 14-day trial), Premium ($99/mo), Business ($499/mo), and
+  Business Plus ($999/mo with a custom Terms of Service). Plans are differentiated
+  by request volume, currency-pair coverage, and access to the WebSocket streaming
+  endpoint, which is gated above the free tier. Prices and per-tier quota numbers
+  are sourced from the pricing/signup surfaces of 1forge.com; per-tier feature
+  details such as exact request quotas and pair counts should be confirmed against
+  the live pricing page before consumers rely on them.
+sources:
+  - https://1forge.com/pricing
+  - https://1forge.com/forex-data-api
+  - https://1forge.com/forex-data-api/api-documentation
+plans:
+  - id: 1forge-starter
+    name: Starter
+    type: subscription
+    description: Entry tier with a 14-day trial. Suitable for individual developers and prototype apps.
+    entries:
+      - label: Monthly subscription
+        name: monthly_subscription
+        type: subscription
+        metric: month
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '$25 USD / mo'
+        userMultiplied: false
+      - label: REST requests
+        name: rest_requests
+        type: quota
+        metric: request
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: 'included; see https://1forge.com/pricing for current quota'
+        userMultiplied: false
+    elements:
+      - name: REST API access
+      - name: 14-day trial
+      - name: Bid + ask quotes
+      - name: Currency conversion
+      - name: Symbol catalog
+      - name: Market status
+  - id: 1forge-premium
+    name: Premium
+    type: subscription
+    description: Production-grade tier with higher quota and access to WebSocket streaming.
+    entries:
+      - label: Monthly subscription
+        name: monthly_subscription
+        type: subscription
+        metric: month
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '$99 USD / mo'
+        userMultiplied: false
+      - label: REST requests
+        name: rest_requests
+        type: quota
+        metric: request
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: 'included; see https://1forge.com/pricing for current quota'
+        userMultiplied: false
+      - label: WebSocket streaming
+        name: websocket_streaming
+        type: flat
+        metric: month
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: 'included'
+        userMultiplied: false
+    elements:
+      - name: REST API access
+      - name: WebSocket streaming (wss://sockets.1forge.com)
+      - name: Bid + ask quotes
+      - name: Currency conversion
+      - name: Symbol catalog
+      - name: Market status
+  - id: 1forge-business
+    name: Business
+    type: subscription
+    description: Higher-throughput tier for trading apps, brokerages, and analytics products.
+    entries:
+      - label: Monthly subscription
+        name: monthly_subscription
+        type: subscription
+        metric: month
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '$499 USD / mo'
+        userMultiplied: false
+      - label: REST requests
+        name: rest_requests
+        type: quota
+        metric: request
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: 'included; see https://1forge.com/pricing for current quota'
+        userMultiplied: false
+      - label: WebSocket streaming
+        name: websocket_streaming
+        type: flat
+        metric: month
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: 'included'
+        userMultiplied: false
+    elements:
+      - name: REST API access
+      - name: WebSocket streaming (wss://sockets.1forge.com)
+      - name: Expanded pair coverage
+      - name: Bid + ask quotes
+      - name: Currency conversion
+      - name: Symbol catalog
+      - name: Market status
+  - id: 1forge-business-plus
+    name: Business Plus
+    type: enterprise
+    description: Top-tier subscription with custom Terms of Service for redistribution, brokerages, and high-frequency consumers.
+    entries:
+      - label: Monthly subscription
+        name: monthly_subscription
+        type: subscription
+        metric: month
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '$999 USD / mo'
+        userMultiplied: false
+      - label: REST requests
+        name: rest_requests
+        type: quota
+        metric: request
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: 'included; see https://1forge.com/pricing for current quota'
+        userMultiplied: false
+      - label: WebSocket streaming
+        name: websocket_streaming
+        type: flat
+        metric: month
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: 'included'
+        userMultiplied: false
+      - label: Custom Terms of Service
+        name: custom_terms
+        type: flat
+        metric: month
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: 'included'
+        userMultiplied: false
+    elements:
+      - name: REST API access
+      - name: WebSocket streaming (wss://sockets.1forge.com)
+      - name: Custom Terms of Service
+      - name: Full pair coverage including synthetics
+      - name: Bid + ask quotes
+      - name: Currency conversion
+      - name: Symbol catalog
+      - name: Market status

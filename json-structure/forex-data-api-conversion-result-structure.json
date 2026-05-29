@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/1forge/refs/heads/main/json-structure/forex-data-api-conversion-result-structure.json",
+  "name": "ConversionResult",
+  "description": "Result of converting a numeric quantity from one currency to another at the current rate via the 1Forge convert endpoint.",
+  "type": "object",
+  "required": ["value", "text", "timestamp"],
+  "properties": {
+    "value": {
+      "type": "double",
+      "description": "Converted amount in the destination currency."
+    },
+    "text": {
+      "type": "string",
+      "description": "Human-readable conversion string."
+    },
+    "timestamp": {
+      "type": "int64",
+      "description": "Unix epoch timestamp (seconds) of the conversion rate."
+    }
+  }
+}

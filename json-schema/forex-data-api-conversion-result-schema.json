@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/1forge/refs/heads/main/json-schema/forex-data-api-conversion-result-schema.json",
+  "title": "ConversionResult",
+  "description": "Result of converting a numeric quantity from one currency to another at the current rate via the 1Forge convert endpoint.",
+  "type": "object",
+  "required": ["value", "text", "timestamp"],
+  "properties": {
+    "value": {
+      "type": "number",
+      "description": "Converted amount in the destination currency.",
+      "example": 89.3164183
+    },
+    "text": {
+      "type": "string",
+      "description": "Human-readable conversion string.",
+      "example": "100 USD is worth 89.3164183 EUR"
+    },
+    "timestamp": {
+      "type": "integer",
+      "description": "Unix epoch timestamp (seconds) of the conversion rate.",
+      "example": 1497186516
+    }
+  }
+}

@@ -1,0 +1,81 @@
+naftiko: "1.0.0-alpha2"
+
+info:
+  label: "1Forge Forex Data API — Market Status"
+  description: >-
+    Market Status — Check whether the forex market is currently open. 1 operation.
+    Lead operation: 1Forge Check Market Open Status. Self-contained Naftiko
+    capability covering one 1Forge business surface.
+  tags:
+    - 1Forge
+    - Forex Data API
+    - Market Status
+  created: "2026-05-28"
+  modified: "2026-05-28"
+
+binds:
+  - namespace: env
+    keys:
+      ONEFORGE_API_KEY: ONEFORGE_API_KEY
+
+capability:
+
+  consumes:
+    - type: http
+      namespace: "forex-data-api-market-status"
+      baseUri: "https://api.1forge.com"
+      description: "1Forge Forex Data API — Market Status business capability. Self-contained, no shared references."
+      authentication:
+        type: apikey
+        key: api_key
+        value: "{{env.ONEFORGE_API_KEY}}"
+        placement: query
+      resources:
+        - name: "market_status"
+          path: "/market_status"
+          operations:
+            - name: "getMarketStatus"
+              method: GET
+              description: "1Forge Check Market Open Status."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+  exposes:
+    - type: rest
+      namespace: "forex-data-api-market-status-rest"
+      port: 8080
+      description: "REST adapter for 1Forge Forex Data API — Market Status. One Spectral-compliant resource per consumed operation, prefixed with /v1."
+      resources:
+        - path: "/v1/market-status"
+          name: "market-status"
+          description: "REST surface for market open/closed status."
+          operations:
+            - method: GET
+              name: "getMarketStatus"
+              description: "1Forge Check Market Open Status."
+              call: "forex-data-api-market-status.getMarketStatus"
+              with: {}
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      namespace: "forex-data-api-market-status-mcp"
+      port: 9090
+      transport: http
+      description: "MCP adapter for 1Forge Forex Data API — Market Status. One tool per consumed operation, routed inline through this capability's consumes block."
+      tools:
+        - name: "check-market-status"
+          description: "1Forge Check Market Open Status."
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: "forex-data-api-market-status.getMarketStatus"
+          with: {}
+          outputParameters:
+            - type: object
+              mapping: "$."

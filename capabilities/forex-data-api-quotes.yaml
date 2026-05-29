@@ -1,0 +1,92 @@
+naftiko: "1.0.0-alpha2"
+
+info:
+  label: "1Forge Forex Data API — Quotes"
+  description: >-
+    Quotes — Real-time bid/ask snapshots for forex and cryptocurrency pairs. 1 operation.
+    Lead operation: 1Forge Get Quotes for Pairs. Self-contained Naftiko capability
+    covering one 1Forge business surface.
+  tags:
+    - 1Forge
+    - Forex Data API
+    - Quotes
+  created: "2026-05-28"
+  modified: "2026-05-28"
+
+binds:
+  - namespace: env
+    keys:
+      ONEFORGE_API_KEY: ONEFORGE_API_KEY
+
+capability:
+
+  # 1. Consumes — the upstream HTTP API this capability speaks to.
+  consumes:
+    - type: http
+      namespace: "forex-data-api-quotes"
+      baseUri: "https://api.1forge.com"
+      description: "1Forge Forex Data API — Quotes business capability. Self-contained, no shared references."
+      authentication:
+        type: apikey
+        key: api_key
+        value: "{{env.ONEFORGE_API_KEY}}"
+        placement: query
+      resources:
+        - name: "quotes"
+          path: "/quotes"
+          operations:
+            - name: "getQuotes"
+              method: GET
+              description: "1Forge Get Quotes for Pairs."
+              inputParameters:
+                - name: "pairs"
+                  in: query
+                  type: string
+                  required: true
+                  description: "Comma-separated list of currency pair symbols (e.g. EUR/USD,GBP/JPY)."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+  # 2. REST exposer.
+  exposes:
+    - type: rest
+      namespace: "forex-data-api-quotes-rest"
+      port: 8080
+      description: "REST adapter for 1Forge Forex Data API — Quotes. One Spectral-compliant resource per consumed operation, prefixed with /v1."
+      resources:
+        - path: "/v1/quotes"
+          name: "quotes"
+          description: "REST surface for forex/crypto quote retrieval."
+          operations:
+            - method: GET
+              name: "getQuotes"
+              description: "1Forge Get Quotes for Pairs."
+              call: "forex-data-api-quotes.getQuotes"
+              with:
+                "pairs": "rest.pairs"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+  # 3. MCP exposer.
+    - type: mcp
+      namespace: "forex-data-api-quotes-mcp"
+      port: 9090
+      transport: http
+      description: "MCP adapter for 1Forge Forex Data API — Quotes. One tool per consumed operation, routed inline through this capability's consumes block."
+      tools:
+        - name: "get-quotes"
+          description: "1Forge Get Quotes for Pairs."
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: "forex-data-api-quotes.getQuotes"
+          with:
+            "pairs": "tools.pairs"
+          outputParameters:
+            - type: object
+              mapping: "$."

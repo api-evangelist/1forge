@@ -1,0 +1,50 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: 1Forge
+providerId: 1forge
+created: '2026-05-28'
+modified: '2026-05-28'
+reconciled: false
+tags:
+  - Rate Limiting
+  - Forex Data
+  - Quota
+description: >-
+  1Forge meters REST consumption against a per-API-key monthly quota set by the
+  caller's subscription tier (Starter / Premium / Business / Business Plus). The
+  /quota endpoint returns current consumption, the plan limit, remaining requests,
+  and hours until the quota resets. WebSocket streaming is gated by plan rather
+  than by raw request rate and is unavailable on the free tier. 1Forge does not
+  publish per-second or per-minute throttling numbers; consumers should treat the
+  quota window as the primary throttle and back off on 401 responses.
+sources:
+  - https://1forge.com/forex-data-api/api-documentation
+  - https://1forge.com/pricing
+  - https://github.com/1Forge/javascript-forex-quotes
+responseCodes:
+  invalidApiKey: 401
+  quotaExceeded: 401
+limits:
+  - name: Monthly REST request quota (per API key)
+    scope: key
+    metric: requests_per_month
+    limit: 'per-plan; observed example quota_limit 5000 / month; see https://1forge.com/pricing for current per-tier numbers'
+    timeFrame: month
+    notes: Inspect via GET /quota. quota_used, quota_limit, and hours_until_reset are returned per call.
+  - name: WebSocket streaming session
+    scope: key
+    metric: concurrent_requests
+    limit: 'per-plan; not available on free tier'
+    notes: Streaming runs over a single WebSocket at wss://sockets.1forge.com/socket. Above the free tier, exact session caps are not publicly documented.
+policies:
+  - name: Quota inspection
+    description: Use GET /quota at any time to inspect quota_used, quota_limit, quota_remaining, and hours_until_reset for the calling key.
+  - name: Quota-driven backoff
+    description: When the key is over quota, the API returns the standard "API Key Not Valid" error envelope. Consumers should treat quota exhaustion as a fail-closed condition until hours_until_reset elapses.
+  - name: Reset cadence
+    description: Quota resets on a per-key basis; hours_until_reset reflects the current rolling window for the key.
+  - name: WebSocket heartbeat
+    description: The server sends `heart` keep-alive frames; clients reply with `beat` to keep the stream open.
+  - name: Server-initiated disconnect
+    description: A `force_close` frame from the server instructs the client to drop the connection. Clients should not auto-reconnect on `force_close` without a backoff window.

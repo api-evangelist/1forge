@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/1forge/refs/heads/main/json-structure/forex-data-api-market-status-structure.json",
+  "name": "MarketStatus",
+  "description": "Open/closed status of the forex market as reported by the 1Forge market_status endpoint.",
+  "type": "object",
+  "required": ["market_is_open"],
+  "properties": {
+    "market_is_open": {
+      "type": "boolean",
+      "description": "True when the forex market is currently open, false otherwise."
+    }
+  }
+}

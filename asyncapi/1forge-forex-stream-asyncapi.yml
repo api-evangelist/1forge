@@ -1,0 +1,190 @@
+asyncapi: 2.6.0
+info:
+  title: 1Forge Forex Stream API
+  version: '2024.01'
+  description: |-
+    1Forge streams real-time forex and cryptocurrency price updates over a single
+    WebSocket connection at `wss://sockets.1forge.com/socket`. Messages are
+    pipe-delimited text frames: `{action}|{body}`, where the body is either a single
+    string token or a JSON document for `update` events.
+
+    Clients must authenticate with their API key immediately after the socket opens
+    and may subscribe to specific pairs, to all pairs, or unsubscribe at any time.
+    WebSocket streaming is not available on free plans.
+  contact:
+    name: 1Forge Support
+    email: contact@1forge.com
+    url: https://1forge.com/forex-data-api
+  license:
+    name: 1Forge Forex API Terms of Use
+    url: https://1forge.com/terms
+  x-generated-from: documentation
+  x-last-validated: '2026-05-28'
+servers:
+  production:
+    url: sockets.1forge.com/socket
+    protocol: wss
+    description: 1Forge production WebSocket stream.
+defaultContentType: text/plain
+channels:
+  stream:
+    description: Single bidirectional channel for control and price-update frames.
+    subscribe:
+      operationId: receiveStreamFrames
+      summary: Receive incoming control or update frames from the 1Forge server.
+      message:
+        oneOf:
+          - $ref: '#/components/messages/LoginPrompt'
+          - $ref: '#/components/messages/PostLoginSuccess'
+          - $ref: '#/components/messages/Heart'
+          - $ref: '#/components/messages/Update'
+          - $ref: '#/components/messages/ForceClose'
+    publish:
+      operationId: sendStreamFrames
+      summary: Send control frames (login, subscribe/unsubscribe, heartbeat) to the 1Forge server.
+      message:
+        oneOf:
+          - $ref: '#/components/messages/LoginCommand'
+          - $ref: '#/components/messages/SubscribeTo'
+          - $ref: '#/components/messages/UnsubscribeFrom'
+          - $ref: '#/components/messages/SubscribeToAll'
+          - $ref: '#/components/messages/UnsubscribeFromAll'
+          - $ref: '#/components/messages/Beat'
+components:
+  messages:
+    LoginPrompt:
+      name: LoginPrompt
+      title: Login prompt
+      summary: Server requests the client send its API key.
+      payload:
+        type: string
+        const: login
+        example: login
+    LoginCommand:
+      name: LoginCommand
+      title: Login command
+      summary: Client sends API key for authentication.
+      payload:
+        type: string
+        description: Frame of the form `login|{api_key}`.
+        example: login|YOUR_API_KEY
+      examples:
+        - name: LoginCommandDefaultExample
+          summary: Default LoginCommand example payload
+          x-microcks-default: true
+          payload: login|YOUR_API_KEY
+    PostLoginSuccess:
+      name: PostLoginSuccess
+      title: Login success acknowledgement
+      summary: Server confirms authentication succeeded.
+      payload:
+        type: string
+        const: post_login_success
+        example: post_login_success
+    SubscribeTo:
+      name: SubscribeTo
+      title: Subscribe to symbol
+      summary: Subscribe to updates for a single currency pair.
+      payload:
+        type: string
+        description: Frame of the form `subscribe_to|{symbol}`.
+        example: subscribe_to|EUR/USD
+    UnsubscribeFrom:
+      name: UnsubscribeFrom
+      title: Unsubscribe from symbol
+      summary: Unsubscribe from updates for a single currency pair.
+      payload:
+        type: string
+        example: unsubscribe_from|EUR/USD
+    SubscribeToAll:
+      name: SubscribeToAll
+      title: Subscribe to all
+      summary: Subscribe to updates for every available pair.
+      payload:
+        type: string
+        const: subscribe_to_all
+        example: subscribe_to_all
+    UnsubscribeFromAll:
+      name: UnsubscribeFromAll
+      title: Unsubscribe from all
+      summary: Unsubscribe from every pair currently subscribed.
+      payload:
+        type: string
+        const: unsubscribe_from_all
+        example: unsubscribe_from_all
+    Update:
+      name: Update
+      title: Price update
+      summary: Real-time bid/ask/price update for a subscribed currency pair.
+      payload:
+        $ref: '#/components/schemas/Quote'
+      examples:
+        - name: UpdateDefaultExample
+          summary: Default Update example payload
+          x-microcks-default: true
+          payload:
+            s: EUR/USD
+            p: 1.181
+            b: 1.18099
+            a: 1.18101
+            t: 1502160794
+    Heart:
+      name: Heart
+      title: Heartbeat prompt
+      summary: Server keep-alive prompt; clients respond with `beat`.
+      payload:
+        type: string
+        const: heart
+        example: heart
+    Beat:
+      name: Beat
+      title: Heartbeat response
+      summary: Client keep-alive response to a server `heart` frame.
+      payload:
+        type: string
+        const: beat
+        example: beat
+    ForceClose:
+      name: ForceClose
+      title: Forced disconnect
+      summary: Server instructs the client to close the connection.
+      payload:
+        type: string
+        const: force_close
+        example: force_close
+  schemas:
+    Quote:
+      title: Quote
+      description: A single bid/ask/price snapshot for a forex or cryptocurrency pair streamed over WebSocket.
+      type: object
+      required:
+        - s
+        - p
+        - b
+        - a
+        - t
+      properties:
+        s:
+          type: string
+          description: Currency pair symbol in `BASE/QUOTE` notation.
+          example: EUR/USD
+        p:
+          type: number
+          format: double
+          description: Last traded price (midpoint of bid/ask).
+          example: 1.181
+        b:
+          type: number
+          format: double
+          description: Current bid price.
+          example: 1.18099
+        a:
+          type: number
+          format: double
+          description: Current ask price.
+          example: 1.18101
+        t:
+          type: integer
+          format: int64
+          description: Unix epoch timestamp (seconds) of the quote.
+          example: 1502160794

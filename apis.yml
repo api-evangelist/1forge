@@ -1,32 +1,176 @@
 aid: 1forge
 name: 1Forge
-description: "Forex currency market data"
+description: >-
+  1Forge delivers real-time forex and cryptocurrency quotes for 700+ currency pairs
+  through a simple JSON REST API and a low-latency WebSocket stream. The product
+  targets trading apps, multi-currency checkout flows, treasury and FinOps tooling,
+  and any workload that needs FIX-speed price data without the FIX-grade integration
+  cost.
 url: https://1forge.com/forex-data-api/api-documentation
+image: https://1forge.com/assets/images/f-blue.svg
 specificationVersion: '0.20'
 created: '2026-05-28'
 modified: '2026-05-28'
 x-source: public-apis/public-apis
 x-category: "Currency Exchange"
-x-tier: 3
-x-tier-reason: bulk-registered-from-public-apis
+x-type: company
+x-tier: 2
+x-tier-reason: enriched-from-stub
 tags:
   - Currency Exchange
-  - Public APIs
+  - Forex
+  - Cryptocurrency
+  - Market Data
+  - Financial Data
+  - Real-Time Data
 apis:
-  - name: 1Forge
-    description: "Forex currency market data"
+  - name: 1Forge Forex Data API
+    description: >-
+      Real-time bid/ask quote retrieval, currency conversion, symbol discovery,
+      market status, and quota inspection for 700+ forex and cryptocurrency pairs
+      served from four global edges (Oregon, Virginia, Taiwan, Belgium).
     humanURL: https://1forge.com/forex-data-api/api-documentation
-    baseURL: https://1forge.com/forex-data-api/api-documentation
+    baseURL: https://api.1forge.com
     tags:
       - Currency Exchange
+      - Forex
+      - Cryptocurrency
+      - Market Data
+      - REST
     properties:
       - type: Documentation
         url: https://1forge.com/forex-data-api/api-documentation
+      - type: OpenAPI
+        url: openapi/1forge-forex-data-api.yml
+      - type: SDK
+        title: JavaScript SDK
+        url: https://github.com/1Forge/javascript-forex-quotes
+      - type: SDK
+        title: PHP SDK
+        url: https://github.com/1Forge/php-forex-quotes
+      - type: SDK
+        title: Python SDK
+        url: https://github.com/1Forge/python-forex-quotes
+      - type: SDK
+        title: Java SDK
+        url: https://github.com/1Forge/java-forex-quotes
+      - type: SDK
+        title: Go SDK
+        url: https://github.com/1Forge/golang-forex-quotes
+      - type: SDK
+        title: .NET SDK
+        url: https://github.com/1Forge/dotnet-forex-quotes
+      - type: NaftikoCapability
+        url: capabilities/forex-data-api-quotes.yaml
+      - type: NaftikoCapability
+        url: capabilities/forex-data-api-convert.yaml
+      - type: NaftikoCapability
+        url: capabilities/forex-data-api-symbols.yaml
+      - type: NaftikoCapability
+        url: capabilities/forex-data-api-market-status.yaml
+      - type: NaftikoCapability
+        url: capabilities/forex-data-api-quota.yaml
+  - name: 1Forge Forex Stream
+    description: >-
+      WebSocket stream that delivers real-time bid/ask updates for subscribed
+      forex and cryptocurrency pairs. Streaming is gated to paid plans.
+    humanURL: https://1forge.com/forex-data-api/api-documentation
+    baseURL: wss://sockets.1forge.com/socket
+    tags:
+      - Currency Exchange
+      - Forex
+      - Cryptocurrency
+      - Market Data
+      - WebSocket
+      - Streaming
+    properties:
+      - type: Documentation
+        url: https://1forge.com/forex-data-api/api-documentation
+      - type: AsyncAPI
+        url: asyncapi/1forge-forex-stream-asyncapi.yml
+      - type: SDK
+        title: JavaScript SDK (WebSocket)
+        url: https://github.com/1Forge/javascript-forex-quotes
+      - type: SDK
+        title: PHP SDK (WebSocket)
+        url: https://github.com/1Forge/php-forex-quotes
 common:
   - type: Website
+    url: https://1forge.com
+  - type: Documentation
     url: https://1forge.com/forex-data-api/api-documentation
+  - type: SignUp
+    url: https://1forge.com/register
+  - type: Pricing
+    url: https://1forge.com/pricing
+  - type: TermsOfService
+    url: https://1forge.com/terms
+  - type: GitHubOrganization
+    url: https://github.com/1Forge
+  - type: Plans
+    url: plans/1forge-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/1forge-rate-limits.yml
+  - type: FinOps
+    url: finops/1forge-finops.yml
+  - type: Vocabulary
+    url: vocabulary/1forge-vocabulary.yml
+  - type: SpectralRules
+    url: rules/1forge-rules.yml
+  - type: JSONLD
+    url: json-ld/1forge-forex-data-api-context.jsonld
   - type: PublicAPIsListing
     url: https://github.com/public-apis/public-apis
+features:
+  - name: Real-Time Forex Quotes
+    description: Bid/ask snapshots for 700+ currency pairs with sub-second updates direct from brokers and liquidity providers.
+  - name: Cryptocurrency Quotes
+    description: Crypto pair coverage alongside traditional forex pairs via the same REST and WebSocket surfaces.
+  - name: Currency Conversion
+    description: Single-call conversion of an amount between two currencies at the current market rate.
+  - name: WebSocket Streaming
+    description: Real-time price-update stream over a single persistent WebSocket connection; available on paid plans.
+  - name: Synthetic Pair Coverage
+    description: Both organic (direct from exchanges) and synthetic (best-rate cross-pair) currency pairs.
+  - name: Per-Key Quota Inspection
+    description: GET /quota returns quota_used, quota_limit, quota_remaining, and hours_until_reset for the calling key.
+  - name: Multi-Region Edge
+    description: Requests are auto-routed to one of four global edges (Oregon, Virginia, Taiwan, Belgium) for lowest latency.
+  - name: Multi-Language SDKs
+    description: Official client libraries in JavaScript, PHP, Python, Java, Go, and .NET.
+useCases:
+  - name: Multi-Currency Checkout
+    description: Convert cart totals to a customer's local currency at checkout using the /convert endpoint.
+  - name: Trading App Pricing Display
+    description: Drive real-time ticker UIs for retail trading and portfolio apps via REST polling or the WebSocket stream.
+  - name: Treasury and Reconciliation
+    description: Stamp daily reconciliation reports with mid-market FX rates for cross-border ledger entries.
+  - name: FX Risk and Hedging Analytics
+    description: Feed live bid/ask data into hedging and FX-exposure dashboards.
+  - name: Quota and Cost Telemetry
+    description: Track per-key quota burn into observability and FinOps pipelines via GET /quota.
+integrations:
+  - name: JavaScript / TypeScript Apps
+    description: First-party forex-quotes npm library covering REST and WebSocket access.
+  - name: PHP Applications
+    description: Official PHP library with REST and WebSocket support.
+  - name: Python Applications
+    description: Official Python library for REST quote retrieval.
+  - name: Java Applications
+    description: Official Java library for REST quote retrieval.
+  - name: Go Applications
+    description: Official Go library for REST quote retrieval.
+  - name: .NET Applications
+    description: Official .NET (C#) library for REST quote retrieval.
+solutions:
+  - name: Brokerage and Trading Platforms
+    description: FIX-grade speed at JSON-API cost for retail brokerages and options houses.
+  - name: Fintech Apps and Wallets
+    description: Live FX quotes for consumer wallets, neobanks, and remittance apps.
+  - name: Ecommerce Multi-Currency Pricing
+    description: Currency conversion and live rates for international checkout flows.
+  - name: Analytics and BI Tools
+    description: Bid/ask history capture (client-side) and conversion rates for financial dashboards.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

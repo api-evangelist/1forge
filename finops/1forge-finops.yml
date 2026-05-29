@@ -1,0 +1,77 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: 1Forge
+providerId: 1forge
+created: '2026-05-28'
+modified: '2026-05-28'
+reconciled: false
+tags:
+  - FinOps
+  - FOCUS
+  - Forex Data
+  - Market Data
+description: 'FOCUS-aligned FinOps for 1Forge: tiered monthly subscriptions metered against a per-key request quota with a query-able /quota endpoint.'
+sources:
+  - https://1forge.com/pricing
+  - https://1forge.com/forex-data-api
+  - https://1forge.com/forex-data-api/api-documentation
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: 1Forge LLC
+serviceCategory: Market Data
+billingModel:
+  pricingCategory: Tiered Subscription
+  billingFrequency: Monthly
+  billingCurrency: USD
+  chargeCategories:
+    - Usage
+    - Purchase
+focusColumns:
+  ServiceName: 1Forge Forex Data API
+  ServiceCategory: Market Data
+  ServiceSubcategory: Forex and Cryptocurrency Quotes
+  ProviderName: 1Forge
+  PublisherName: 1Forge LLC
+  InvoiceIssuerName: 1Forge LLC
+  BillingCurrency: USD
+  ChargeCategory: Usage
+meters:
+  - name: subscription_seat
+    unit: month
+    aggregation: sum
+    dimensions:
+      - plan_tier
+    description: Flat monthly subscription charge per API key tier (Starter / Premium / Business / Business Plus).
+  - name: rest_api_requests
+    unit: request
+    aggregation: sum
+    dimensions:
+      - api_key
+      - endpoint
+    description: REST requests counted against the per-key monthly quota; observable via GET /quota's quota_used field.
+  - name: websocket_streaming_session
+    unit: month
+    aggregation: max
+    dimensions:
+      - api_key
+    description: WebSocket streaming entitlement bundled with paid tiers; presence/absence is plan-gated rather than per-tick billed.
+  - name: pair_coverage
+    unit: varies
+    aggregation: max
+    dimensions:
+      - plan_tier
+    description: Currency-pair coverage entitlement varies by tier; not a per-call meter but a capability gate.
+principles:
+  - name: Visibility
+    description: Poll GET /quota on a schedule to surface quota_used, quota_limit, quota_remaining, and hours_until_reset. Forward those values into your observability stack to chart burn vs. window reset.
+  - name: Allocation
+    description: Issue a distinct 1Forge API key per team or product so that quota_used per key maps cleanly to a cost-allocation tag in your FinOps tooling.
+  - name: Optimization
+    description: Batch quote retrieval into a single /quotes call with multiple pairs rather than one call per pair; use WebSocket streaming for high-frequency consumers above the free tier; cache /symbols and /market_status on a short TTL.
+  - name: Accountability
+    description: Assign a platform owner per 1Forge API key. Alert when quota_remaining drops below a configured threshold and when hours_until_reset is high but quota is nearly exhausted.
