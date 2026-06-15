@@ -1,0 +1,799 @@
+{
+  "item": [
+    {
+      "id": "2f0bff97-0757-46ae-a721-d33efa336c8c",
+      "name": "Quotes",
+      "description": {
+        "content": "Real-time bid/ask quote data for forex and cryptocurrency pairs.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "df5b2f17-5d5d-49b1-ab64-d4e226b9d788",
+          "name": "1Forge Get Quotes for Pairs",
+          "request": {
+            "name": "1Forge Get Quotes for Pairs",
+            "description": {
+              "content": "Returns the latest bid, ask, and price data for one or more currency pairs.\nPairs are supplied as a comma-separated list. Either `EUR/USD` or `EURUSD`\nnotation is accepted. Responses are an array of `Quote` objects in the order\nthe pairs were requested.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "quotes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "pairs",
+                  "value": "<string>",
+                  "description": "(Required) Comma-separated list of currency pair symbols (e.g. `EUR/USD,GBP/JPY,AUD/USD`)."
+                },
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "<string>",
+                  "description": "(Required) Your 1Forge API key. Obtain one at https://1forge.com."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3079b1ca-daed-47f2-b806-1d8f3caff4e2",
+              "name": "Array of `Quote` records, one per requested currency pair.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "quotes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pairs",
+                      "value": "EUR/USD,GBP/JPY,AUD/USD"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "YOUR_API_KEY"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"s\": \"EUR/USD\",\n    \"p\": 1.181,\n    \"b\": 1.18099,\n    \"a\": 1.18101,\n    \"t\": 1502160794\n  },\n  {\n    \"s\": \"GBP/JPY\",\n    \"p\": 144.3715,\n    \"b\": 144.368,\n    \"a\": 144.375,\n    \"t\": 1502160794\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f76a6eb9-68a3-4e56-9f49-24f5362badf1",
+              "name": "Missing or invalid API key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "quotes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pairs",
+                      "value": "EUR/USD,GBP/JPY,AUD/USD"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "YOUR_API_KEY"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"message\": \"API Key Not Valid. Please go to 1forge.com to get an API key.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "5796962e-cd24-4d27-84ea-cf7b358e136b",
+      "name": "Convert",
+      "description": {
+        "content": "Convert a quantity from one currency into another at the current rate.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c2c71de6-7d6d-479a-aacb-1f5000dc2283",
+          "name": "1Forge Convert Currency Amount",
+          "request": {
+            "name": "1Forge Convert Currency Amount",
+            "description": {
+              "content": "Converts a numeric quantity from one currency to another at the current rate.\nReturns the converted value, a human-readable string, and the conversion\ntimestamp.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "convert"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<string>",
+                  "description": "(Required) ISO 4217 source currency code (e.g. `USD`)."
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<string>",
+                  "description": "(Required) ISO 4217 destination currency code (e.g. `EUR`)."
+                },
+                {
+                  "disabled": false,
+                  "key": "quantity",
+                  "value": "<double>",
+                  "description": "(Required) Numeric amount of the source currency to convert."
+                },
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "<string>",
+                  "description": "(Required) Your 1Forge API key."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e6e7f3a0-3f5a-49f9-965e-ebc9748cab44",
+              "name": "Conversion result.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "convert"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "USD"
+                    },
+                    {
+                      "key": "to",
+                      "value": "EUR"
+                    },
+                    {
+                      "key": "quantity",
+                      "value": "100"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "YOUR_API_KEY"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": 89.3164183,\n  \"text\": \"100 USD is worth 89.3164183 EUR\",\n  \"timestamp\": 1497186516\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8fcb2a8e-1273-4dfe-8fcf-47e6e1340651",
+              "name": "Missing or invalid API key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "convert"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "USD"
+                    },
+                    {
+                      "key": "to",
+                      "value": "EUR"
+                    },
+                    {
+                      "key": "quantity",
+                      "value": "100"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "YOUR_API_KEY"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"message\": \"API Key Not Valid. Please go to 1forge.com to get an API key.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "92bc7618-f3d7-4d83-992d-69ada0dd9c88",
+      "name": "Symbols",
+      "description": {
+        "content": "Discover the currency pairs available to the calling API key.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b8c20588-6f6b-4fd9-93a4-554ca6d653bf",
+          "name": "1Forge List Available Symbols",
+          "request": {
+            "name": "1Forge List Available Symbols",
+            "description": {
+              "content": "Returns the full list of currency pair symbols available to the calling API\nkey. Symbols are expressed in `BASE/QUOTE` notation (e.g. `EUR/USD`).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "symbols"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "<string>",
+                  "description": "(Required) Your 1Forge API key."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b3da036b-dee8-4988-a985-8e5b0971cdbd",
+              "name": "Array of currency pair symbols.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "symbols"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "YOUR_API_KEY"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  \"AUD/JPY\",\n  \"AUD/USD\",\n  \"CHF/JPY\",\n  \"EUR/AUD\",\n  \"EUR/CAD\",\n  \"EUR/CHF\",\n  \"EUR/GBP\",\n  \"EUR/JPY\",\n  \"EUR/USD\",\n  \"GBP/AUD\",\n  \"GBP/CAD\",\n  \"GBP/CHF\",\n  \"GBP/JPY\",\n  \"NZD/JPY\",\n  \"NZD/USD\",\n  \"USD/CAD\",\n  \"USD/CHF\",\n  \"USD/JPY\"\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a640f2af-8ebb-4e04-8b48-c1f93d01ad3d",
+              "name": "Missing or invalid API key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "symbols"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "YOUR_API_KEY"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"message\": \"API Key Not Valid. Please go to 1forge.com to get an API key.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "e224fb7b-df2e-442c-9945-1631a30d317f",
+      "name": "Market Status",
+      "description": {
+        "content": "Check whether the forex market is currently open.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c0a0ff9e-83ea-4537-bc0a-9fdfc5e18676",
+          "name": "1Forge Check Market Open Status",
+          "request": {
+            "name": "1Forge Check Market Open Status",
+            "description": {
+              "content": "Returns a boolean indicating whether the forex market is currently open. The\nforex market is closed on weekends.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "market_status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "<string>",
+                  "description": "(Required) Your 1Forge API key."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6c475edc-9a5e-4c5b-b934-956a5acbc21b",
+              "name": "Market open/closed status.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "market_status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "YOUR_API_KEY"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"market_is_open\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fd2e51e8-1c25-41a7-879e-8512ba355a22",
+              "name": "Missing or invalid API key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "market_status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "YOUR_API_KEY"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"message\": \"API Key Not Valid. Please go to 1forge.com to get an API key.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "40f98360-c5fb-4e01-8f83-2a7d7d256caa",
+      "name": "Quota",
+      "description": {
+        "content": "Inspect API key consumption and remaining quota.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e5e7d2a1-ac92-4d43-a0f3-81a5330f2434",
+          "name": "1Forge Get API Key Quota",
+          "request": {
+            "name": "1Forge Get API Key Quota",
+            "description": {
+              "content": "Returns the calling API key's current usage and remaining quota for the\nbilling window, along with the number of hours until quota resets.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "quota"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "<string>",
+                  "description": "(Required) Your 1Forge API key."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b9a0ee22-87c9-4b12-be2b-ab5b833128c6",
+              "name": "Quota usage information.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "quota"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "YOUR_API_KEY"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"quota_used\": 259,\n  \"quota_limit\": 5000,\n  \"quota_remaining\": 4741,\n  \"hours_until_reset\": 23\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "245cd167-edf7-41d5-91d7-b5f421019139",
+              "name": "Missing or invalid API key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "quota"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "YOUR_API_KEY"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"message\": \"API Key Not Valid. Please go to 1forge.com to get an API key.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.1forge.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "api_key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "9716161d-0cf0-4d3d-b7fa-a21ef98cf2b2",
+    "name": "1Forge Forex Data API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "1Forge provides real-time bid and ask quote data for 700+ forex and cryptocurrency\ncurrency pairs, delivered with FIX-grade speed over a simple JSON REST API. The\nREST surface covers five operations: list available symbols, fetch quotes for one\nor more pairs, convert a quantity between two currencies, check whether the market\nis currently open, and inspect remaining quota for the calling API key.\n\n1Forge connects directly to brokers and liquidity providers and serves traffic from\nfour global edge locations (Oregon, Virginia, Taiwan, Belgium). Streaming over\nWebSocket is documented separately in `asyncapi/1forge-forex-stream-asyncapi.yml`.\n\nContact Support:\n Name: 1Forge Support\n Email: contact@1forge.com",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,177 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "1Forge Forex Data API",
+    "version": "2024.01"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "api_key",
+      "value": "{{api_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Quotes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "1Forge Get Quotes for Pairs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.1forge.com/quotes",
+            "params": [
+              {
+                "name": "pairs",
+                "value": "EUR/USD,GBP/JPY,AUD/USD",
+                "type": "query",
+                "description": "Comma-separated list of currency pair symbols (e.g. `EUR/USD,GBP/JPY,AUD/USD`)."
+              },
+              {
+                "name": "api_key",
+                "value": "YOUR_API_KEY",
+                "type": "query",
+                "description": "Your 1Forge API key. Obtain one at https://1forge.com."
+              }
+            ]
+          },
+          "docs": "Returns the latest bid, ask, and price data for one or more currency pairs.\nPairs are supplied as a comma-separated list. Either `EUR/USD` or `EURUSD`\nnotation is accepted. Responses are an array of `Quote` objects in the order\nthe pairs were requested."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Convert",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "1Forge Convert Currency Amount",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.1forge.com/convert",
+            "params": [
+              {
+                "name": "from",
+                "value": "USD",
+                "type": "query",
+                "description": "ISO 4217 source currency code (e.g. `USD`)."
+              },
+              {
+                "name": "to",
+                "value": "EUR",
+                "type": "query",
+                "description": "ISO 4217 destination currency code (e.g. `EUR`)."
+              },
+              {
+                "name": "quantity",
+                "value": "100",
+                "type": "query",
+                "description": "Numeric amount of the source currency to convert."
+              },
+              {
+                "name": "api_key",
+                "value": "YOUR_API_KEY",
+                "type": "query",
+                "description": "Your 1Forge API key."
+              }
+            ]
+          },
+          "docs": "Converts a numeric quantity from one currency to another at the current rate.\nReturns the converted value, a human-readable string, and the conversion\ntimestamp."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Symbols",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "1Forge List Available Symbols",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.1forge.com/symbols",
+            "params": [
+              {
+                "name": "api_key",
+                "value": "YOUR_API_KEY",
+                "type": "query",
+                "description": "Your 1Forge API key."
+              }
+            ]
+          },
+          "docs": "Returns the full list of currency pair symbols available to the calling API\nkey. Symbols are expressed in `BASE/QUOTE` notation (e.g. `EUR/USD`)."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Market Status",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "1Forge Check Market Open Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.1forge.com/market_status",
+            "params": [
+              {
+                "name": "api_key",
+                "value": "YOUR_API_KEY",
+                "type": "query",
+                "description": "Your 1Forge API key."
+              }
+            ]
+          },
+          "docs": "Returns a boolean indicating whether the forex market is currently open. The\nforex market is closed on weekends."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Quota",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "1Forge Get API Key Quota",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.1forge.com/quota",
+            "params": [
+              {
+                "name": "api_key",
+                "value": "YOUR_API_KEY",
+                "type": "query",
+                "description": "Your 1Forge API key."
+              }
+            ]
+          },
+          "docs": "Returns the calling API key's current usage and remaining quota for the\nbilling window, along with the number of hours until quota resets."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
