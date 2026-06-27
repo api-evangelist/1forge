@@ -39,22 +39,22 @@ apis:
         url: https://1forge.com/forex-data-api/api-documentation
       - type: OpenAPI
         url: openapi/1forge-forex-data-api.yml
-      - type: SDK
+      - type: SDKs
         title: JavaScript SDK
         url: https://github.com/1Forge/javascript-forex-quotes
-      - type: SDK
+      - type: SDKs
         title: PHP SDK
         url: https://github.com/1Forge/php-forex-quotes
-      - type: SDK
+      - type: SDKs
         title: Python SDK
         url: https://github.com/1Forge/python-forex-quotes
-      - type: SDK
+      - type: SDKs
         title: Java SDK
         url: https://github.com/1Forge/java-forex-quotes
-      - type: SDK
+      - type: SDKs
         title: Go SDK
         url: https://github.com/1Forge/golang-forex-quotes
-      - type: SDK
+      - type: SDKs
         title: .NET SDK
         url: https://github.com/1Forge/dotnet-forex-quotes
   - name: 1Forge Forex Stream
@@ -75,10 +75,10 @@ apis:
         url: https://1forge.com/forex-data-api/api-documentation
       - type: AsyncAPI
         url: asyncapi/1forge-forex-stream-asyncapi.yml
-      - type: SDK
+      - type: SDKs
         title: JavaScript SDK (WebSocket)
         url: https://github.com/1Forge/javascript-forex-quotes
-      - type: SDK
+      - type: SDKs
         title: PHP SDK (WebSocket)
         url: https://github.com/1Forge/php-forex-quotes
 common:
@@ -86,7 +86,7 @@ common:
     url: https://1forge.com
   - type: Documentation
     url: https://1forge.com/forex-data-api/api-documentation
-  - type: SignUp
+  - type: Signup
     url: https://1forge.com/register
   - type: Pricing
     url: https://1forge.com/pricing
