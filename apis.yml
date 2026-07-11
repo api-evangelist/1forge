@@ -82,6 +82,10 @@ apis:
         title: PHP SDK (WebSocket)
         url: https://github.com/1Forge/php-forex-quotes
 common:
+  - type: DomainSecurity
+    url: security/1forge-domain-security.yml
+  - type: Authentication
+    url: authentication/1forge-authentication.yml
   - type: Website
     url: https://1forge.com
   - type: Documentation

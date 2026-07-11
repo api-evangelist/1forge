@@ -1,0 +1,18 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/1forge-forex-data-api.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - query
+schemes:
+- name: ApiKeyAuth
+  type: apiKey
+  in: query
+  parameter: api_key
+  description: |-
+    1Forge requires an API key passed as the `api_key` query parameter on every
+    request. Obtain a key at https://1forge.com.
+  sources:
+  - openapi/1forge-forex-data-api.yml
