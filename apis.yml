@@ -82,6 +82,8 @@ apis:
         title: PHP SDK (WebSocket)
         url: https://github.com/1Forge/php-forex-quotes
 common:
+  - type: AgenticAccess
+    url: agentic-access/1forge-agentic-access.yml
   - type: DomainSecurity
     url: security/1forge-domain-security.yml
   - type: Authentication
