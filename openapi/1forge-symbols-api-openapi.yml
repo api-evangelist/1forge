@@ -1,0 +1,125 @@
+openapi: 3.0.3
+info:
+  title: 1Forge Forex Data Convert Symbols API
+  description: '1Forge provides real-time bid and ask quote data for 700+ forex and cryptocurrency
+
+    currency pairs, delivered with FIX-grade speed over a simple JSON REST API. The
+
+    REST surface covers five operations: list available symbols, fetch quotes for one
+
+    or more pairs, convert a quantity between two currencies, check whether the market
+
+    is currently open, and inspect remaining quota for the calling API key.
+
+
+    1Forge connects directly to brokers and liquidity providers and serves traffic from
+
+    four global edge locations (Oregon, Virginia, Taiwan, Belgium). Streaming over
+
+    WebSocket is documented separately in `asyncapi/1forge-forex-stream-asyncapi.yml`.'
+  version: '2024.01'
+  contact:
+    name: 1Forge Support
+    email: contact@1forge.com
+    url: https://1forge.com/forex-data-api
+  license:
+    name: 1Forge Forex API Terms of Use
+    url: https://1forge.com/terms
+  termsOfService: https://1forge.com/terms
+  x-generated-from: documentation
+  x-last-validated: '2026-05-28'
+servers:
+- url: https://api.1forge.com
+  description: 1Forge production REST endpoint (auto-routed to nearest edge).
+security:
+- ApiKeyAuth: []
+tags:
+- name: Symbols
+  description: Discover the currency pairs available to the calling API key.
+paths:
+  /symbols:
+    get:
+      operationId: getSymbols
+      summary: 1Forge List Available Symbols
+      description: 'Returns the full list of currency pair symbols available to the calling API
+
+        key. Symbols are expressed in `BASE/QUOTE` notation (e.g. `EUR/USD`).'
+      tags:
+      - Symbols
+      parameters:
+      - name: api_key
+        in: query
+        required: true
+        description: Your 1Forge API key.
+        schema:
+          type: string
+        example: YOUR_API_KEY
+      responses:
+        '200':
+          description: Array of currency pair symbols.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+                  description: Currency pair in `BASE/QUOTE` notation.
+                  example: EUR/USD
+              examples:
+                GetSymbols200Example:
+                  summary: Default getSymbols 200 response
+                  x-microcks-default: true
+                  value:
+                  - AUD/JPY
+                  - AUD/USD
+                  - CHF/JPY
+                  - EUR/AUD
+                  - EUR/CAD
+                  - EUR/CHF
+                  - EUR/GBP
+                  - EUR/JPY
+                  - EUR/USD
+                  - GBP/AUD
+                  - GBP/CAD
+                  - GBP/CHF
+                  - GBP/JPY
+                  - NZD/JPY
+                  - NZD/USD
+                  - USD/CAD
+                  - USD/CHF
+                  - USD/JPY
+        '401':
+          description: Missing or invalid API key.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    Error:
+      title: Error
+      description: Generic error returned when authentication fails or the request is invalid.
+      type: object
+      required:
+      - error
+      - message
+      properties:
+        error:
+          type: boolean
+          description: Always true for error responses.
+          example: true
+        message:
+          type: string
+          description: Human-readable error description.
+          example: API Key Not Valid. Please go to 1forge.com to get an API key.
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: query
+      name: api_key
+      description: '1Forge requires an API key passed as the `api_key` query parameter on every
+
+        request. Obtain a key at https://1forge.com.'

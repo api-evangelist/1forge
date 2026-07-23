@@ -1,0 +1,136 @@
+openapi: 3.0.3
+info:
+  title: 1Forge Forex Data Convert Quota API
+  description: '1Forge provides real-time bid and ask quote data for 700+ forex and cryptocurrency
+
+    currency pairs, delivered with FIX-grade speed over a simple JSON REST API. The
+
+    REST surface covers five operations: list available symbols, fetch quotes for one
+
+    or more pairs, convert a quantity between two currencies, check whether the market
+
+    is currently open, and inspect remaining quota for the calling API key.
+
+
+    1Forge connects directly to brokers and liquidity providers and serves traffic from
+
+    four global edge locations (Oregon, Virginia, Taiwan, Belgium). Streaming over
+
+    WebSocket is documented separately in `asyncapi/1forge-forex-stream-asyncapi.yml`.'
+  version: '2024.01'
+  contact:
+    name: 1Forge Support
+    email: contact@1forge.com
+    url: https://1forge.com/forex-data-api
+  license:
+    name: 1Forge Forex API Terms of Use
+    url: https://1forge.com/terms
+  termsOfService: https://1forge.com/terms
+  x-generated-from: documentation
+  x-last-validated: '2026-05-28'
+servers:
+- url: https://api.1forge.com
+  description: 1Forge production REST endpoint (auto-routed to nearest edge).
+security:
+- ApiKeyAuth: []
+tags:
+- name: Quota
+  description: Inspect API key consumption and remaining quota.
+paths:
+  /quota:
+    get:
+      operationId: getQuota
+      summary: 1Forge Get API Key Quota
+      description: 'Returns the calling API key''s current usage and remaining quota for the
+
+        billing window, along with the number of hours until quota resets.'
+      tags:
+      - Quota
+      parameters:
+      - name: api_key
+        in: query
+        required: true
+        description: Your 1Forge API key.
+        schema:
+          type: string
+        example: YOUR_API_KEY
+      responses:
+        '200':
+          description: Quota usage information.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Quota'
+              examples:
+                GetQuota200Example:
+                  summary: Default getQuota 200 response
+                  x-microcks-default: true
+                  value:
+                    quota_used: 259
+                    quota_limit: 5000
+                    quota_remaining: 4741
+                    hours_until_reset: 23
+        '401':
+          description: Missing or invalid API key.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    Quota:
+      title: Quota
+      description: Current API key consumption against the plan quota.
+      type: object
+      required:
+      - quota_used
+      - quota_limit
+      - quota_remaining
+      - hours_until_reset
+      properties:
+        quota_used:
+          type: integer
+          format: int64
+          description: Number of requests consumed in the current billing window.
+          example: 259
+        quota_limit:
+          type: integer
+          format: int64
+          description: Total request quota for the current billing window.
+          example: 5000
+        quota_remaining:
+          type: integer
+          format: int64
+          description: Requests remaining in the current billing window.
+          example: 4741
+        hours_until_reset:
+          type: integer
+          description: Hours until the quota resets.
+          example: 23
+    Error:
+      title: Error
+      description: Generic error returned when authentication fails or the request is invalid.
+      type: object
+      required:
+      - error
+      - message
+      properties:
+        error:
+          type: boolean
+          description: Always true for error responses.
+          example: true
+        message:
+          type: string
+          description: Human-readable error description.
+          example: API Key Not Valid. Please go to 1forge.com to get an API key.
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: query
+      name: api_key
+      description: '1Forge requires an API key passed as the `api_key` query parameter on every
+
+        request. Obtain a key at https://1forge.com.'

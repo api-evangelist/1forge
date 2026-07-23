@@ -1,0 +1,115 @@
+openapi: 3.0.3
+info:
+  title: 1Forge Forex Data Convert Market Status API
+  description: '1Forge provides real-time bid and ask quote data for 700+ forex and cryptocurrency
+
+    currency pairs, delivered with FIX-grade speed over a simple JSON REST API. The
+
+    REST surface covers five operations: list available symbols, fetch quotes for one
+
+    or more pairs, convert a quantity between two currencies, check whether the market
+
+    is currently open, and inspect remaining quota for the calling API key.
+
+
+    1Forge connects directly to brokers and liquidity providers and serves traffic from
+
+    four global edge locations (Oregon, Virginia, Taiwan, Belgium). Streaming over
+
+    WebSocket is documented separately in `asyncapi/1forge-forex-stream-asyncapi.yml`.'
+  version: '2024.01'
+  contact:
+    name: 1Forge Support
+    email: contact@1forge.com
+    url: https://1forge.com/forex-data-api
+  license:
+    name: 1Forge Forex API Terms of Use
+    url: https://1forge.com/terms
+  termsOfService: https://1forge.com/terms
+  x-generated-from: documentation
+  x-last-validated: '2026-05-28'
+servers:
+- url: https://api.1forge.com
+  description: 1Forge production REST endpoint (auto-routed to nearest edge).
+security:
+- ApiKeyAuth: []
+tags:
+- name: Market Status
+  description: Check whether the forex market is currently open.
+paths:
+  /market_status:
+    get:
+      operationId: getMarketStatus
+      summary: 1Forge Check Market Open Status
+      description: 'Returns a boolean indicating whether the forex market is currently open. The
+
+        forex market is closed on weekends.'
+      tags:
+      - Market Status
+      parameters:
+      - name: api_key
+        in: query
+        required: true
+        description: Your 1Forge API key.
+        schema:
+          type: string
+        example: YOUR_API_KEY
+      responses:
+        '200':
+          description: Market open/closed status.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MarketStatus'
+              examples:
+                GetMarketStatus200Example:
+                  summary: Default getMarketStatus 200 response
+                  x-microcks-default: true
+                  value:
+                    market_is_open: true
+        '401':
+          description: Missing or invalid API key.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    MarketStatus:
+      title: MarketStatus
+      description: Open/closed status of the forex market.
+      type: object
+      required:
+      - market_is_open
+      properties:
+        market_is_open:
+          type: boolean
+          description: True when the forex market is currently open, false otherwise.
+          example: true
+    Error:
+      title: Error
+      description: Generic error returned when authentication fails or the request is invalid.
+      type: object
+      required:
+      - error
+      - message
+      properties:
+        error:
+          type: boolean
+          description: Always true for error responses.
+          example: true
+        message:
+          type: string
+          description: Human-readable error description.
+          example: API Key Not Valid. Please go to 1forge.com to get an API key.
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: query
+      name: api_key
+      description: '1Forge requires an API key passed as the `api_key` query parameter on every
+
+        request. Obtain a key at https://1forge.com.'
