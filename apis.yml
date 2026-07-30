@@ -5,6 +5,19 @@ description: >-
   low-latency WebSocket stream. The product targets trading apps, multi-currency checkout flows, treasury and FinOps
   tooling, and any workload that needs FIX-speed price data without the FIX-grade integration cost.
 url: https://1forge.com/forex-data-api/api-documentation
+accessModel:
+  pricing: paid
+  onboarding: self-serve
+  trial: true
+  try_now: true
+  public: false
+  label: Paid (free trial) · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 image: https://1forge.com/assets/images/f-blue.svg
 specificationVersion: '0.20'
 created: '2026-05-28'
@@ -22,65 +35,150 @@ tags:
   - Financial Data
   - Real-Time Data
 apis:
-  - name: 1Forge Forex Data API
-    description: >-
-      Real-time bid/ask quote retrieval, currency conversion, symbol discovery, market status, and quota inspection for
-      700+ forex and cryptocurrency pairs served from four global edges (Oregon, Virginia, Taiwan, Belgium).
-    humanURL: https://1forge.com/forex-data-api/api-documentation
-    baseURL: https://api.1forge.com
-    tags:
-      - Currency Exchange
-      - Forex
-      - Cryptocurrency
-      - Market Data
-      - REST
-    properties:
-      - type: Documentation
-        url: https://1forge.com/forex-data-api/api-documentation
-      - type: OpenAPI
-        url: openapi/1forge-forex-data-api.yml
-      - type: SDKs
-        title: JavaScript SDK
-        url: https://github.com/1Forge/javascript-forex-quotes
-      - type: SDKs
-        title: PHP SDK
-        url: https://github.com/1Forge/php-forex-quotes
-      - type: SDKs
-        title: Python SDK
-        url: https://github.com/1Forge/python-forex-quotes
-      - type: SDKs
-        title: Java SDK
-        url: https://github.com/1Forge/java-forex-quotes
-      - type: SDKs
-        title: Go SDK
-        url: https://github.com/1Forge/golang-forex-quotes
-      - type: SDKs
-        title: .NET SDK
-        url: https://github.com/1Forge/dotnet-forex-quotes
-  - name: 1Forge Forex Stream
-    description: >-
-      WebSocket stream that delivers real-time bid/ask updates for subscribed forex and cryptocurrency pairs. Streaming
-      is gated to paid plans.
-    humanURL: https://1forge.com/forex-data-api/api-documentation
-    baseURL: wss://sockets.1forge.com/socket
-    tags:
-      - Currency Exchange
-      - Forex
-      - Cryptocurrency
-      - Market Data
-      - WebSocket
-      - Streaming
-    properties:
-      - type: Documentation
-        url: https://1forge.com/forex-data-api/api-documentation
-      - type: AsyncAPI
-        url: asyncapi/1forge-forex-stream-asyncapi.yml
-      - type: SDKs
-        title: JavaScript SDK (WebSocket)
-        url: https://github.com/1Forge/javascript-forex-quotes
-      - type: SDKs
-        title: PHP SDK (WebSocket)
-        url: https://github.com/1Forge/php-forex-quotes
+- name: 1Forge Forex Stream
+  description: >-
+    WebSocket stream that delivers real-time bid/ask updates for subscribed forex and cryptocurrency pairs.
+    Streaming is gated to paid plans.
+  humanURL: https://1forge.com/forex-data-api/api-documentation
+  baseURL: wss://sockets.1forge.com/socket
+  tags:
+  - Currency Exchange
+  - Forex
+  - Cryptocurrency
+  - Market Data
+  - WebSocket
+  - Streaming
+  properties:
+  - type: Documentation
+    url: https://1forge.com/forex-data-api/api-documentation
+  - type: AsyncAPI
+    url: asyncapi/1forge-forex-stream-asyncapi.yml
+  - type: SDKs
+    title: JavaScript SDK (WebSocket)
+    url: https://github.com/1Forge/javascript-forex-quotes
+  - type: SDKs
+    title: PHP SDK (WebSocket)
+    url: https://github.com/1Forge/php-forex-quotes
+- aid: 1forge:1forge-convert-api
+  name: 1Forge Convert API
+  description: Convert a quantity from one currency into another at the current rate.
+  humanURL: https://1forge.com/forex-data-api/api-documentation
+  baseURL: https://api.1forge.com
+  tags:
+  - Convert
+  properties:
+  - type: OpenAPI
+    url: openapi/1forge-convert-api-openapi.yml
+  - type: Documentation
+    url: https://1forge.com/forex-data-api/api-documentation
+  - type: SDKs
+    url: https://github.com/1Forge/javascript-forex-quotes
+  - type: SDKs
+    url: https://github.com/1Forge/php-forex-quotes
+  - type: SDKs
+    url: https://github.com/1Forge/python-forex-quotes
+  - type: SDKs
+    url: https://github.com/1Forge/java-forex-quotes
+  - type: SDKs
+    url: https://github.com/1Forge/golang-forex-quotes
+  - type: SDKs
+    url: https://github.com/1Forge/dotnet-forex-quotes
+- aid: 1forge:1forge-market-status-api
+  name: 1Forge Market Status API
+  description: Check whether the forex market is currently open.
+  humanURL: https://1forge.com/forex-data-api/api-documentation
+  baseURL: https://api.1forge.com
+  tags:
+  - Market Status
+  properties:
+  - type: OpenAPI
+    url: openapi/1forge-market-status-api-openapi.yml
+  - type: Documentation
+    url: https://1forge.com/forex-data-api/api-documentation
+  - type: SDKs
+    url: https://github.com/1Forge/javascript-forex-quotes
+  - type: SDKs
+    url: https://github.com/1Forge/php-forex-quotes
+  - type: SDKs
+    url: https://github.com/1Forge/python-forex-quotes
+  - type: SDKs
+    url: https://github.com/1Forge/java-forex-quotes
+  - type: SDKs
+    url: https://github.com/1Forge/golang-forex-quotes
+  - type: SDKs
+    url: https://github.com/1Forge/dotnet-forex-quotes
+- aid: 1forge:1forge-quota-api
+  name: 1Forge Quota API
+  description: Inspect API key consumption and remaining quota.
+  humanURL: https://1forge.com/forex-data-api/api-documentation
+  baseURL: https://api.1forge.com
+  tags:
+  - Quota
+  properties:
+  - type: OpenAPI
+    url: openapi/1forge-quota-api-openapi.yml
+  - type: Documentation
+    url: https://1forge.com/forex-data-api/api-documentation
+  - type: SDKs
+    url: https://github.com/1Forge/javascript-forex-quotes
+  - type: SDKs
+    url: https://github.com/1Forge/php-forex-quotes
+  - type: SDKs
+    url: https://github.com/1Forge/python-forex-quotes
+  - type: SDKs
+    url: https://github.com/1Forge/java-forex-quotes
+  - type: SDKs
+    url: https://github.com/1Forge/golang-forex-quotes
+  - type: SDKs
+    url: https://github.com/1Forge/dotnet-forex-quotes
+- aid: 1forge:1forge-quotes-api
+  name: 1Forge Quotes API
+  description: Real-time bid/ask quote data for forex and cryptocurrency pairs.
+  humanURL: https://1forge.com/forex-data-api/api-documentation
+  baseURL: https://api.1forge.com
+  tags:
+  - Quotes
+  properties:
+  - type: OpenAPI
+    url: openapi/1forge-quotes-api-openapi.yml
+  - type: Documentation
+    url: https://1forge.com/forex-data-api/api-documentation
+  - type: SDKs
+    url: https://github.com/1Forge/javascript-forex-quotes
+  - type: SDKs
+    url: https://github.com/1Forge/php-forex-quotes
+  - type: SDKs
+    url: https://github.com/1Forge/python-forex-quotes
+  - type: SDKs
+    url: https://github.com/1Forge/java-forex-quotes
+  - type: SDKs
+    url: https://github.com/1Forge/golang-forex-quotes
+  - type: SDKs
+    url: https://github.com/1Forge/dotnet-forex-quotes
+- aid: 1forge:1forge-symbols-api
+  name: 1Forge Symbols API
+  description: Discover the currency pairs available to the calling API key.
+  humanURL: https://1forge.com/forex-data-api/api-documentation
+  baseURL: https://api.1forge.com
+  tags:
+  - Symbols
+  properties:
+  - type: OpenAPI
+    url: openapi/1forge-symbols-api-openapi.yml
+  - type: Documentation
+    url: https://1forge.com/forex-data-api/api-documentation
+  - type: SDKs
+    url: https://github.com/1Forge/javascript-forex-quotes
+  - type: SDKs
+    url: https://github.com/1Forge/php-forex-quotes
+  - type: SDKs
+    url: https://github.com/1Forge/python-forex-quotes
+  - type: SDKs
+    url: https://github.com/1Forge/java-forex-quotes
+  - type: SDKs
+    url: https://github.com/1Forge/golang-forex-quotes
+  - type: SDKs
+    url: https://github.com/1Forge/dotnet-forex-quotes
 common:
   - type: AgenticAccess
     url: agentic-access/1forge-agentic-access.yml
