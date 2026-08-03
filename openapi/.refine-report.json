@@ -1,0 +1,22 @@
+{
+  "provider": "1forge",
+  "sources": [
+    "1forge-convert-api-openapi.yml",
+    "1forge-market-status-api-openapi.yml",
+    "1forge-quota-api-openapi.yml",
+    "1forge-quotes-api-openapi.yml",
+    "1forge-symbols-api-openapi.yml"
+  ],
+  "outputs": [
+    "1forge-convert-api-openapi.yml",
+    "1forge-market-status-api-openapi.yml",
+    "1forge-quota-api-openapi.yml",
+    "1forge-quotes-api-openapi.yml",
+    "1forge-symbols-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
