@@ -1,0 +1,45 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "1Forge Forex Data Convert Quota API",
+    "version": "2024.01"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "api_key",
+      "value": "{{api_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Quota",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "1Forge Get API Key Quota",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.1forge.com/quota",
+            "params": [
+              {
+                "name": "api_key",
+                "value": "YOUR_API_KEY",
+                "type": "query",
+                "description": "Your 1Forge API key."
+              }
+            ]
+          },
+          "docs": "Returns the calling API key's current usage and remaining quota for the\nbilling window, along with the number of hours until quota resets."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

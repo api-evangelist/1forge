@@ -1,0 +1,179 @@
+{
+  "item": [
+    {
+      "id": "fac27056-5c47-4d6a-a212-cd55db002a08",
+      "name": "Market Status",
+      "description": {
+        "content": "Check whether the forex market is currently open.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3f767e7f-67e1-477f-bc1e-05eea17a0e08",
+          "name": "1Forge Check Market Open Status",
+          "request": {
+            "name": "1Forge Check Market Open Status",
+            "description": {
+              "content": "Returns a boolean indicating whether the forex market is currently open. The\nforex market is closed on weekends.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "market_status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "<string>",
+                  "description": "(Required) Your 1Forge API key."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d9082791-a4ee-4552-841d-dc7ef9818edd",
+              "name": "Market open/closed status.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "market_status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "YOUR_API_KEY"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"market_is_open\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8ab5f75b-2294-4b64-ae48-cefb0829216b",
+              "name": "Missing or invalid API key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "market_status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "YOUR_API_KEY"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"message\": \"API Key Not Valid. Please go to 1forge.com to get an API key.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.1forge.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "api_key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c8a82447-e869-4f33-ae8d-1b1f19081d7d",
+    "name": "1Forge Forex Data Convert Market Status API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "1Forge provides real-time bid and ask quote data for 700+ forex and cryptocurrency\ncurrency pairs, delivered with FIX-grade speed over a simple JSON REST API. The\nREST surface covers five operations: list available symbols, fetch quotes for one\nor more pairs, convert a quantity between two currencies, check whether the market\nis currently open, and inspect remaining quota for the calling API key.\n\n1Forge connects directly to brokers and liquidity providers and serves traffic from\nfour global edge locations (Oregon, Virginia, Taiwan, Belgium). Streaming over\nWebSocket is documented separately in `asyncapi/1forge-forex-stream-asyncapi.yml`.\n\nContact Support:\n Name: 1Forge Support\n Email: contact@1forge.com",
+      "type": "text/plain"
+    }
+  }
+}

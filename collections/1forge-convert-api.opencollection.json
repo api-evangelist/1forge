@@ -1,0 +1,63 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "1Forge Forex Data Convert API",
+    "version": "2024.01"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "api_key",
+      "value": "{{api_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Convert",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "1Forge Convert Currency Amount",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.1forge.com/convert",
+            "params": [
+              {
+                "name": "from",
+                "value": "USD",
+                "type": "query",
+                "description": "ISO 4217 source currency code (e.g. `USD`)."
+              },
+              {
+                "name": "to",
+                "value": "EUR",
+                "type": "query",
+                "description": "ISO 4217 destination currency code (e.g. `EUR`)."
+              },
+              {
+                "name": "quantity",
+                "value": "100",
+                "type": "query",
+                "description": "Numeric amount of the source currency to convert."
+              },
+              {
+                "name": "api_key",
+                "value": "YOUR_API_KEY",
+                "type": "query",
+                "description": "Your 1Forge API key."
+              }
+            ]
+          },
+          "docs": "Converts a numeric quantity from one currency to another at the current rate.\nReturns the converted value, a human-readable string, and the conversion\ntimestamp."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

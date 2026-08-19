@@ -1,0 +1,179 @@
+{
+  "item": [
+    {
+      "id": "499270da-f544-443d-a0ed-5def3ab5a5f8",
+      "name": "Symbols",
+      "description": {
+        "content": "Discover the currency pairs available to the calling API key.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "801eeb91-23cd-4285-99bd-31bc64adbe57",
+          "name": "1Forge List Available Symbols",
+          "request": {
+            "name": "1Forge List Available Symbols",
+            "description": {
+              "content": "Returns the full list of currency pair symbols available to the calling API\nkey. Symbols are expressed in `BASE/QUOTE` notation (e.g. `EUR/USD`).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "symbols"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "<string>",
+                  "description": "(Required) Your 1Forge API key."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "24b31511-33ec-48d3-970a-12a9fce3bb8a",
+              "name": "Array of currency pair symbols.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "symbols"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "YOUR_API_KEY"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  \"AUD/JPY\",\n  \"AUD/USD\",\n  \"CHF/JPY\",\n  \"EUR/AUD\",\n  \"EUR/CAD\",\n  \"EUR/CHF\",\n  \"EUR/GBP\",\n  \"EUR/JPY\",\n  \"EUR/USD\",\n  \"GBP/AUD\",\n  \"GBP/CAD\",\n  \"GBP/CHF\",\n  \"GBP/JPY\",\n  \"NZD/JPY\",\n  \"NZD/USD\",\n  \"USD/CAD\",\n  \"USD/CHF\",\n  \"USD/JPY\"\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0b3c7490-52e7-482d-982e-8689adfdcc49",
+              "name": "Missing or invalid API key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "symbols"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "YOUR_API_KEY"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"message\": \"API Key Not Valid. Please go to 1forge.com to get an API key.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.1forge.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "api_key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "33d04e16-a4ed-46dd-b6ef-768a8aa49af8",
+    "name": "1Forge Forex Data Convert Symbols API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "1Forge provides real-time bid and ask quote data for 700+ forex and cryptocurrency\ncurrency pairs, delivered with FIX-grade speed over a simple JSON REST API. The\nREST surface covers five operations: list available symbols, fetch quotes for one\nor more pairs, convert a quantity between two currencies, check whether the market\nis currently open, and inspect remaining quota for the calling API key.\n\n1Forge connects directly to brokers and liquidity providers and serves traffic from\nfour global edge locations (Oregon, Virginia, Taiwan, Belgium). Streaming over\nWebSocket is documented separately in `asyncapi/1forge-forex-stream-asyncapi.yml`.\n\nContact Support:\n Name: 1Forge Support\n Email: contact@1forge.com",
+      "type": "text/plain"
+    }
+  }
+}

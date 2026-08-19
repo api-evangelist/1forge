@@ -1,0 +1,45 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "1Forge Forex Data Convert Market Status API",
+    "version": "2024.01"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "api_key",
+      "value": "{{api_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Market Status",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "1Forge Check Market Open Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.1forge.com/market_status",
+            "params": [
+              {
+                "name": "api_key",
+                "value": "YOUR_API_KEY",
+                "type": "query",
+                "description": "Your 1Forge API key."
+              }
+            ]
+          },
+          "docs": "Returns a boolean indicating whether the forex market is currently open. The\nforex market is closed on weekends."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,179 @@
+{
+  "item": [
+    {
+      "id": "bf2cca85-7465-465a-90d5-03a96c9fd0e9",
+      "name": "Quota",
+      "description": {
+        "content": "Inspect API key consumption and remaining quota.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d878495c-1dfa-47b9-ab4c-b9f7cf0bda73",
+          "name": "1Forge Get API Key Quota",
+          "request": {
+            "name": "1Forge Get API Key Quota",
+            "description": {
+              "content": "Returns the calling API key's current usage and remaining quota for the\nbilling window, along with the number of hours until quota resets.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "quota"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "<string>",
+                  "description": "(Required) Your 1Forge API key."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bab4607d-93db-4707-9d47-4be6ecc68c59",
+              "name": "Quota usage information.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "quota"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "YOUR_API_KEY"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"quota_used\": 259,\n  \"quota_limit\": 5000,\n  \"quota_remaining\": 4741,\n  \"hours_until_reset\": 23\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "54828450-0172-45e2-9d69-de0450949902",
+              "name": "Missing or invalid API key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "quota"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "YOUR_API_KEY"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"message\": \"API Key Not Valid. Please go to 1forge.com to get an API key.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.1forge.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "api_key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "e8cf77df-00e1-445c-a927-0029d73d4b7c",
+    "name": "1Forge Forex Data Convert Quota API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "1Forge provides real-time bid and ask quote data for 700+ forex and cryptocurrency\ncurrency pairs, delivered with FIX-grade speed over a simple JSON REST API. The\nREST surface covers five operations: list available symbols, fetch quotes for one\nor more pairs, convert a quantity between two currencies, check whether the market\nis currently open, and inspect remaining quota for the calling API key.\n\n1Forge connects directly to brokers and liquidity providers and serves traffic from\nfour global edge locations (Oregon, Virginia, Taiwan, Belgium). Streaming over\nWebSocket is documented separately in `asyncapi/1forge-forex-stream-asyncapi.yml`.\n\nContact Support:\n Name: 1Forge Support\n Email: contact@1forge.com",
+      "type": "text/plain"
+    }
+  }
+}

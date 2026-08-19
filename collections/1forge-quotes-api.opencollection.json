@@ -1,0 +1,51 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "1Forge Forex Data Convert Quotes API",
+    "version": "2024.01"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "api_key",
+      "value": "{{api_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Quotes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "1Forge Get Quotes for Pairs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.1forge.com/quotes",
+            "params": [
+              {
+                "name": "pairs",
+                "value": "EUR/USD,GBP/JPY,AUD/USD",
+                "type": "query",
+                "description": "Comma-separated list of currency pair symbols (e.g. `EUR/USD,GBP/JPY,AUD/USD`)."
+              },
+              {
+                "name": "api_key",
+                "value": "YOUR_API_KEY",
+                "type": "query",
+                "description": "Your 1Forge API key. Obtain one at https://1forge.com."
+              }
+            ]
+          },
+          "docs": "Returns the latest bid, ask, and price data for one or more currency pairs.\nPairs are supplied as a comma-separated list. Either `EUR/USD` or `EURUSD`\nnotation is accepted. Responses are an array of `Quote` objects in the order\nthe pairs were requested."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

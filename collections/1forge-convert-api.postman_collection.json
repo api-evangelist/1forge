@@ -1,0 +1,221 @@
+{
+  "item": [
+    {
+      "id": "88d210d8-3820-4528-84c7-748bfd557962",
+      "name": "Convert",
+      "description": {
+        "content": "Convert a quantity from one currency into another at the current rate.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a96e8d2a-4f9c-418e-bfd4-4af57e4a1bec",
+          "name": "1Forge Convert Currency Amount",
+          "request": {
+            "name": "1Forge Convert Currency Amount",
+            "description": {
+              "content": "Converts a numeric quantity from one currency to another at the current rate.\nReturns the converted value, a human-readable string, and the conversion\ntimestamp.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "convert"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<string>",
+                  "description": "(Required) ISO 4217 source currency code (e.g. `USD`)."
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<string>",
+                  "description": "(Required) ISO 4217 destination currency code (e.g. `EUR`)."
+                },
+                {
+                  "disabled": false,
+                  "key": "quantity",
+                  "value": "<double>",
+                  "description": "(Required) Numeric amount of the source currency to convert."
+                },
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "<string>",
+                  "description": "(Required) Your 1Forge API key."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7c994c92-37bd-4fb4-b35c-31b99b171e56",
+              "name": "Conversion result.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "convert"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "USD"
+                    },
+                    {
+                      "key": "to",
+                      "value": "EUR"
+                    },
+                    {
+                      "key": "quantity",
+                      "value": "100"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "YOUR_API_KEY"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": 89.3164183,\n  \"text\": \"100 USD is worth 89.3164183 EUR\",\n  \"timestamp\": 1497186516\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c3455ccb-a698-4c88-97ef-8de9bcd38b26",
+              "name": "Missing or invalid API key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "convert"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "USD"
+                    },
+                    {
+                      "key": "to",
+                      "value": "EUR"
+                    },
+                    {
+                      "key": "quantity",
+                      "value": "100"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "YOUR_API_KEY"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"message\": \"API Key Not Valid. Please go to 1forge.com to get an API key.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.1forge.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "api_key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "245e2ccf-7b31-48fe-a8d0-f735bd773e9c",
+    "name": "1Forge Forex Data Convert API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "1Forge provides real-time bid and ask quote data for 700+ forex and cryptocurrency\ncurrency pairs, delivered with FIX-grade speed over a simple JSON REST API. The\nREST surface covers five operations: list available symbols, fetch quotes for one\nor more pairs, convert a quantity between two currencies, check whether the market\nis currently open, and inspect remaining quota for the calling API key.\n\n1Forge connects directly to brokers and liquidity providers and serves traffic from\nfour global edge locations (Oregon, Virginia, Taiwan, Belgium). Streaming over\nWebSocket is documented separately in `asyncapi/1forge-forex-stream-asyncapi.yml`.\n\nContact Support:\n Name: 1Forge Support\n Email: contact@1forge.com",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "1Forge Forex Data Convert Symbols API",
+    "version": "2024.01"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "api_key",
+      "value": "{{api_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Symbols",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "1Forge List Available Symbols",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.1forge.com/symbols",
+            "params": [
+              {
+                "name": "api_key",
+                "value": "YOUR_API_KEY",
+                "type": "query",
+                "description": "Your 1Forge API key."
+              }
+            ]
+          },
+          "docs": "Returns the full list of currency pair symbols available to the calling API\nkey. Symbols are expressed in `BASE/QUOTE` notation (e.g. `EUR/USD`)."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

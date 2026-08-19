@@ -1,0 +1,193 @@
+{
+  "item": [
+    {
+      "id": "d9741bb1-640f-403e-893c-f705a3a263cc",
+      "name": "Quotes",
+      "description": {
+        "content": "Real-time bid/ask quote data for forex and cryptocurrency pairs.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9bef7e2b-798b-4564-a9ac-a9ab33a8b1d7",
+          "name": "1Forge Get Quotes for Pairs",
+          "request": {
+            "name": "1Forge Get Quotes for Pairs",
+            "description": {
+              "content": "Returns the latest bid, ask, and price data for one or more currency pairs.\nPairs are supplied as a comma-separated list. Either `EUR/USD` or `EURUSD`\nnotation is accepted. Responses are an array of `Quote` objects in the order\nthe pairs were requested.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "quotes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "pairs",
+                  "value": "<string>",
+                  "description": "(Required) Comma-separated list of currency pair symbols (e.g. `EUR/USD,GBP/JPY,AUD/USD`)."
+                },
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "<string>",
+                  "description": "(Required) Your 1Forge API key. Obtain one at https://1forge.com."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c468caa1-b9f3-44ad-a6a0-3b6b3f8cceb4",
+              "name": "Array of `Quote` records, one per requested currency pair.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "quotes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pairs",
+                      "value": "EUR/USD,GBP/JPY,AUD/USD"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "YOUR_API_KEY"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"s\": \"EUR/USD\",\n    \"p\": 1.181,\n    \"b\": 1.18099,\n    \"a\": 1.18101,\n    \"t\": 1502160794\n  },\n  {\n    \"s\": \"GBP/JPY\",\n    \"p\": 144.3715,\n    \"b\": 144.368,\n    \"a\": 144.375,\n    \"t\": 1502160794\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1935c52b-26cc-4293-bc17-3fe346ba1b5d",
+              "name": "Missing or invalid API key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "quotes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pairs",
+                      "value": "EUR/USD,GBP/JPY,AUD/USD"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "YOUR_API_KEY"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"message\": \"API Key Not Valid. Please go to 1forge.com to get an API key.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.1forge.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "api_key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "6c6488d0-9960-42d5-a480-f5653ed88063",
+    "name": "1Forge Forex Data Convert Quotes API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "1Forge provides real-time bid and ask quote data for 700+ forex and cryptocurrency\ncurrency pairs, delivered with FIX-grade speed over a simple JSON REST API. The\nREST surface covers five operations: list available symbols, fetch quotes for one\nor more pairs, convert a quantity between two currencies, check whether the market\nis currently open, and inspect remaining quota for the calling API key.\n\n1Forge connects directly to brokers and liquidity providers and serves traffic from\nfour global edge locations (Oregon, Virginia, Taiwan, Belgium). Streaming over\nWebSocket is documented separately in `asyncapi/1forge-forex-stream-asyncapi.yml`.\n\nContact Support:\n Name: 1Forge Support\n Email: contact@1forge.com",
+      "type": "text/plain"
+    }
+  }
+}
