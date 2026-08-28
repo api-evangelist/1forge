@@ -5,6 +5,18 @@ description: >-
   low-latency WebSocket stream. The product targets trading apps, multi-currency checkout flows, treasury and FinOps
   tooling, and any workload that needs FIX-speed price data without the FIX-grade integration cost.
 url: https://1forge.com/forex-data-api/api-documentation
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: paid
   onboarding: self-serve
