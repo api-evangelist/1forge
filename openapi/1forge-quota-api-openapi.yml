@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: 1Forge Forex Data Convert Quota API
   description: '1Forge provides real-time bid and ask quote data for 700+ forex and cryptocurrency
@@ -81,6 +81,22 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    Error:
+      title: Error
+      description: Generic error returned when authentication fails or the request is invalid.
+      type: object
+      required:
+      - error
+      - message
+      properties:
+        error:
+          type: boolean
+          description: Always true for error responses.
+          example: true
+        message:
+          type: string
+          description: Human-readable error description.
+          example: API Key Not Valid. Please go to 1forge.com to get an API key.
     Quota:
       title: Quota
       description: Current API key consumption against the plan quota.
@@ -110,22 +126,6 @@ components:
           type: integer
           description: Hours until the quota resets.
           example: 23
-    Error:
-      title: Error
-      description: Generic error returned when authentication fails or the request is invalid.
-      type: object
-      required:
-      - error
-      - message
-      properties:
-        error:
-          type: boolean
-          description: Always true for error responses.
-          example: true
-        message:
-          type: string
-          description: Human-readable error description.
-          example: API Key Not Valid. Please go to 1forge.com to get an API key.
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
