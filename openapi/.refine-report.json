@@ -1,11 +1,7 @@
 {
   "provider": "1forge",
   "sources": [
-    "1forge-convert-api-openapi.yml",
-    "1forge-market-status-api-openapi.yml",
-    "1forge-quota-api-openapi.yml",
-    "1forge-quotes-api-openapi.yml",
-    "1forge-symbols-api-openapi.yml"
+    "_ae-authored/1forge-forex-data-api.yml"
   ],
   "outputs": [
     "1forge-convert-api-openapi.yml",
@@ -18,7 +14,15 @@
   "errors": [],
   "warnings": [],
   "notes": [
+    "sourced from openapi/_original/ (0 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "1forge-forex-data-api.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
     "apis.yml register: already-registered"
   ],
-  "skipped": []
+  "skipped": [
+    "1forge-convert-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "1forge-market-status-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "1forge-quota-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "1forge-quotes-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "1forge-symbols-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
