@@ -46,6 +46,7 @@ tags:
   - Market Data
   - Financial Data
   - Real-Time Data
+  - Real-Time
 apis:
 - name: 1Forge Forex Stream
   description: >-
