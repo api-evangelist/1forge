@@ -65,17 +65,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    MarketStatus:
-      title: MarketStatus
-      description: Open/closed status of the forex market.
-      type: object
-      required:
-      - market_is_open
-      properties:
-        market_is_open:
-          type: boolean
-          description: True when the forex market is currently open, false otherwise.
-          example: true
     Error:
       title: Error
       description: Generic error returned when authentication fails or the request is invalid.
@@ -92,6 +81,17 @@ components:
           type: string
           description: Human-readable error description.
           example: API Key Not Valid. Please go to 1forge.com to get an API key.
+    MarketStatus:
+      title: MarketStatus
+      description: Open/closed status of the forex market.
+      type: object
+      required:
+      - market_is_open
+      properties:
+        market_is_open:
+          type: boolean
+          description: True when the forex market is currently open, false otherwise.
+          example: true
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
