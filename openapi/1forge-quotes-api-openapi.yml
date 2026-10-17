@@ -87,22 +87,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    Error:
-      title: Error
-      description: Generic error returned when authentication fails or the request is invalid.
-      type: object
-      required:
-      - error
-      - message
-      properties:
-        error:
-          type: boolean
-          description: Always true for error responses.
-          example: true
-        message:
-          type: string
-          description: Human-readable error description.
-          example: API Key Not Valid. Please go to 1forge.com to get an API key.
     Quote:
       title: Quote
       description: A single bid/ask/price snapshot for a forex or cryptocurrency pair.
@@ -138,6 +122,22 @@ components:
           format: int64
           description: Unix epoch timestamp (seconds) of the quote.
           example: 1502160794
+    Error:
+      title: Error
+      description: Generic error returned when authentication fails or the request is invalid.
+      type: object
+      required:
+      - error
+      - message
+      properties:
+        error:
+          type: boolean
+          description: Always true for error responses.
+          example: true
+        message:
+          type: string
+          description: Human-readable error description.
+          example: API Key Not Valid. Please go to 1forge.com to get an API key.
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
