@@ -40,6 +40,13 @@ x-type: company
 x-tier: 2
 x-tier-reason: enriched-from-stub
 tags:
+  - Foreign Exchange
+  - Cryptocurrency
+  - Market Data
+  - Financial Data
+  - Real-Time Data
+  - Real-Time
+tags_raw:
   - Currency Exchange
   - Forex
   - Cryptocurrency
@@ -55,6 +62,12 @@ apis:
   humanURL: https://1forge.com/forex-data-api/api-documentation
   baseURL: wss://sockets.1forge.com/socket
   tags:
+  - Foreign Exchange
+  - Cryptocurrency
+  - Market Data
+  - WebSocket
+  - Streaming
+  tags_raw:
   - Currency Exchange
   - Forex
   - Cryptocurrency
