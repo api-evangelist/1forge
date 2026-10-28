@@ -1,4 +1,4 @@
-# 1Forge (1forge)
+# 1Forge
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,94 +66,186 @@
 
 1Forge delivers real-time forex and cryptocurrency quotes for 700+ currency pairs through a simple JSON REST API and a low-latency WebSocket stream. The product targets trading apps, multi-currency checkout flows, treasury and FinOps tooling, and any workload that needs FIX-speed price data without the FIX-grade integration cost.
 
-**APIs.json:** [https://1forge.com/forex-data-api/api-documentation](https://1forge.com/forex-data-api/api-documentation)
+**Areas:** Foreign Exchange · Cryptocurrency · Market Data · Financial Data · Real-Time Data · Real-Time
 
-## Tags
+## 1Forge on APIs.io
 
-- Currency Exchange
-- Forex
-- Cryptocurrency
-- Market Data
-- Financial Data
-- Real-Time Data
+Everything profiled for 1Forge is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/1forge/](https://apis.io/providers/1forge/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (6)
 
-- **Created:** 2026-05-28
-- **Modified:** 2026-05-28
+- [1Forge Forex Stream](https://apis.io/apis/1forge/1forge-forex-stream/) — WebSocket stream that delivers real-time bid/ask updates for subscribed forex and cryptocurrency pairs. Streaming is gated to paid plans.
+- [1Forge Convert API](https://apis.io/apis/1forge/1forge-convert-api/) — Convert a quantity from one currency into another at the current rate.
+- [1Forge Market Status API](https://apis.io/apis/1forge/1forge-market-status-api/) — Check whether the forex market is currently open.
+- [1Forge Quota API](https://apis.io/apis/1forge/1forge-quota-api/) — Inspect API key consumption and remaining quota.
+- [1Forge Quotes API](https://apis.io/apis/1forge/1forge-quotes-api/) — Real-time bid/ask quote data for forex and cryptocurrency pairs.
+- [1Forge Symbols API](https://apis.io/apis/1forge/1forge-symbols-api/) — Discover the currency pairs available to the calling API key.
 
-## APIs
+### Published properties
 
-### 1Forge Forex Data API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-Real-time bid/ask quote retrieval, currency conversion, symbol discovery, market status, and quota inspection for 700+ forex and cryptocurrency pairs served from four global edges (Oregon, Virginia, Taiwan, Belgium).
+#### AsyncAPI (1)
 
-- **Human URL:** [https://1forge.com/forex-data-api/api-documentation](https://1forge.com/forex-data-api/api-documentation)
-- **Base URL:** `https://api.1forge.com`
+Event-driven and webhook contracts.
 
-#### Tags
+- [1Forge Forex Stream API](https://apis.io/asyncapis/1forge/1forge-forex-stream-asyncapi/)
 
-- Currency Exchange
-- Forex
-- Cryptocurrency
-- Market Data
-- REST
+#### Event channels (1)
 
-#### Properties
+Individual events and webhooks the provider emits.
 
-- [Documentation](https://1forge.com/forex-data-api/api-documentation)
-- [OpenAPI](openapi/1forge-forex-data-api.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/1forge-forex-data-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/1forge-forex-data-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [SDK](https://github.com/1Forge/javascript-forex-quotes)
-- [SDK](https://github.com/1Forge/php-forex-quotes)
-- [SDK](https://github.com/1Forge/python-forex-quotes)
-- [SDK](https://github.com/1Forge/java-forex-quotes)
-- [SDK](https://github.com/1Forge/golang-forex-quotes)
-- [SDK](https://github.com/1Forge/dotnet-forex-quotes)
+- [stream](https://apis.io/channels/1forge/stream/)
 
-### 1Forge Forex Stream
+#### Agentic access (1)
 
-WebSocket stream that delivers real-time bid/ask updates for subscribed forex and cryptocurrency pairs. Streaming is gated to paid plans.
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- **Human URL:** [https://1forge.com/forex-data-api/api-documentation](https://1forge.com/forex-data-api/api-documentation)
-- **Base URL:** `wss://sockets.1forge.com/socket`
+- [1Forge Agentic Access](https://apis.io/agentic-access/1forge/1forge-agentic-access/)
 
-#### Tags
+#### JSON Schema (4)
 
-- Currency Exchange
-- Forex
-- Cryptocurrency
-- Market Data
-- WebSocket
-- Streaming
+The data models the API reads and writes.
 
-#### Properties
+- [ConversionResult](https://apis.io/schemas/1forge/forex-data-api-conversion-result/)
+- [MarketStatus](https://apis.io/schemas/1forge/forex-data-api-market-status/)
+- [Quota](https://apis.io/schemas/1forge/forex-data-api-quota/)
+- [Quote](https://apis.io/schemas/1forge/forex-data-api-quote/)
 
-- [Documentation](https://1forge.com/forex-data-api/api-documentation)
-- [AsyncAPI](asyncapi/1forge-forex-stream-asyncapi.yml) — [AsyncAPI Specification](https://www.asyncapi.com/docs/reference/specification/latest)
-- [SDK](https://github.com/1Forge/javascript-forex-quotes)
-- [SDK](https://github.com/1Forge/php-forex-quotes)
-- [Postman Collection](collections/1forge-forex-data-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/1forge-forex-data-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### JSON Structure (4)
 
-## Common Properties
+Data models expressed in JSON Structure.
+
+- [Forex Data Api Conversion Result Structure](https://apis.io/json-structure/1forge/forex-data-api-conversion-result-structure/)
+- [Forex Data Api Market Status Structure](https://apis.io/json-structure/1forge/forex-data-api-market-status-structure/)
+- [Forex Data Api Quota Structure](https://apis.io/json-structure/1forge/forex-data-api-quota-structure/)
+- [Forex Data Api Quote Structure](https://apis.io/json-structure/1forge/forex-data-api-quote-structure/)
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [1Forge Forex Data Api Context](https://apis.io/jsonld/1forge/1forge-forex-data-api-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [1Forge Vocabulary](https://apis.io/vocabularies/1forge/1forge-vocabulary/)
+
+#### Examples (4)
+
+Example requests and responses.
+
+- [Forex Data Api Conversion Result Example](https://apis.io/examples/1forge/forex-data-api-conversion-result-example/)
+- [Forex Data Api Market Status Example](https://apis.io/examples/1forge/forex-data-api-market-status-example/)
+- [Forex Data Api Quota Example](https://apis.io/examples/1forge/forex-data-api-quota-example/)
+- [Forex Data Api Quote Example](https://apis.io/examples/1forge/forex-data-api-quote-example/)
+
+#### Collections (6)
+
+Postman and Open Collection request collections.
+
+- [1Forge Forex Data Convert API](https://apis.io/collections/1forge/open-1forge-convert-api/)
+- [1Forge Forex Data API](https://apis.io/collections/1forge/open-1forge-forex-data-api/)
+- [1Forge Forex Data Convert Market Status API](https://apis.io/collections/1forge/open-1forge-market-status-api/)
+- [1Forge Forex Data Convert Quota API](https://apis.io/collections/1forge/open-1forge-quota-api/)
+- [1Forge Forex Data Convert Quotes API](https://apis.io/collections/1forge/open-1forge-quotes-api/)
+- [1Forge Forex Data Convert Symbols API](https://apis.io/collections/1forge/open-1forge-symbols-api/)
+
+#### Governance rules (3)
+
+Spectral rulesets for the provider's contracts.
+
+- [1Forge — asyncapi rules](https://apis.io/rules/1forge/1forge-asyncapi-spectral-rules/)
+- [1Forge — jsonschema rules](https://apis.io/rules/1forge/1forge-jsonschema-spectral-rules/)
+- [1Forge API Rules](https://apis.io/rules/1forge/1forge-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [1Forge Authentication](https://apis.io/security/1forge/1forge-authentication/)
+- [1Forge Domain Security](https://apis.io/security/1forge/1forge-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [1Forge Plans Pricing](https://apis.io/plans/1forge/1forge-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [1Forge Rate Limits](https://apis.io/rate-limits/1forge/1forge-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [1Forge Finops](https://apis.io/finops/1forge/1forge-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://1forge.com)
 - [Documentation](https://1forge.com/forex-data-api/api-documentation)
-- [Sign Up](https://1forge.com/register)
 - [Pricing](https://1forge.com/pricing)
-- [Terms of Service](https://1forge.com/terms)
-- [GitHub Organization](https://github.com/1Forge)
-- [Plans](plans/1forge-plans-pricing.yml)
-- [Rate Limits](rate-limits/1forge-rate-limits.yml)
-- [Fin Ops](finops/1forge-finops.yml)
-- [Vocabulary](vocabulary/1forge-vocabulary.yml)
-- [Spectral Rules](rules/1forge-rules.yml)
-- [JSON-LD](json-ld/1forge-forex-data-api-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-- [Public APIs Listing](https://github.com/public-apis/public-apis)
+- [Blog](https://1forge.com/blog/)
+- [Terms of service](https://1forge.com/terms)
+- [GitHub](https://github.com/1Forge)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 30.2** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 78.6 |
+| Contract quality | 29.9 |
+| Contract governance | 27.3 |
+| Operational transparency | 7.9 |
+| Developer ergonomics | 31.0 |
+| Access clarity | 21.1 |
+
+**Agent readiness 27.8** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | na |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | na |
+| Error Semantics | — |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | derived (partial credit) |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | na |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 21.3** — Securities & Market Data
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/1forge/](https://apis.io/providers/1forge/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for 1Forge: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/1forge/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
