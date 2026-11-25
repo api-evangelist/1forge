@@ -199,18 +199,18 @@ Links to the company's own pages. This repository publishes no copy of their spe
 
 ## API Evangelist rating
 
-**Kin Score 30.2** — thin · rubric 0.24.0 · scored 2026-10-17
+**Kin Score 28.7** — thin · rubric 0.28.1 · scored 2026-11-21
 
 | Facet | Score |
 |---|---|
 | Discoverability | 78.6 |
 | Contract quality | 29.9 |
 | Contract governance | 27.3 |
-| Operational transparency | 7.9 |
+| Operational transparency | 9.5 |
 | Developer ergonomics | 31.0 |
-| Access clarity | 21.1 |
+| Access clarity | 17.0 |
 
-**Agent readiness 27.8** — agent-aware
+**Agent readiness 26.1** — agent-aware
 
 | Agent-readiness dimension | Result |
 |---|---|
@@ -233,8 +233,14 @@ Links to the company's own pages. This repository publishes no copy of their spe
 | Protected Resource Metadata | — |
 | Dynamic Client Registration | — |
 | Agentic Commerce | — |
+| Pagination Ratio | — |
+| Operation Distinctiveness | na |
+| MCP Tool Quality | na |
+| Onboarding Descriptor | — |
+| Dns Aid Index | na |
+| Markdown Negotiation | na |
 
-**Regulatory alignment 21.3** — Securities & Market Data
+**Regulatory alignment 15.7** — Securities & Market Data
 
 The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/1forge/](https://apis.io/providers/1forge/).
 
